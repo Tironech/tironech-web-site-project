@@ -1,0 +1,168 @@
+---
+// Hero — full-viewport con gradiente reactivo al mouse
+---
+<section class="hero" id="home" aria-labelledby="hero-title">
+  <div class="hero-gradient" data-mouse-gradient aria-hidden="true"></div>
+  <div class="hero-noise" aria-hidden="true"></div>
+  <div class="hero-img-wrap" aria-hidden="true">
+    <img
+      src="/assets/img/hero.jpg"
+      alt=""
+      class="hero-bg-img"
+      fetchpriority="high"
+      loading="eager"
+      decoding="async"
+    />
+    <div class="hero-img-tint"></div>
+  </div>
+
+  <div class="container hero-inner">
+    <p class="hero-kicker">
+      <span class="kicker-dot" aria-hidden="true"></span>
+      <span>BOUTIQUE DE INGENIERÍA · B2B · USA &amp; LATAM</span>
+    </p>
+
+    <h1 class="hero-title" id="hero-title">
+      Bugs en producción.<br />
+      Sin equipo senior.<br />
+      Tecnología que no escala.<br />
+      <em>Nosotros resolvemos los tres.</em>
+    </h1>
+
+    <p class="hero-sub">
+      QA avanzado con IA, arquitectura sin deuda técnica y equipos de
+      desarrollo llave en mano. Para startups y empresas que no pueden
+      darse el lujo de fallar en producción.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-cta">
+        Agendar sesión de descubrimiento <span class="btn-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="#entry" class="btn btn-ghost">
+        Ver soluciones <span class="btn-arrow" aria-hidden="true">↓</span>
+      </a>
+    </div>
+
+    <div class="hero-markets" aria-label="Mercados que atendemos">
+      <span class="market-label">Atendemos:</span>
+      <span>SaaS B2B</span>
+      <span class="sep" aria-hidden="true">·</span>
+      <span>Fintech</span>
+      <span class="sep" aria-hidden="true">·</span>
+      <span>Startups USA</span>
+      <span class="sep" aria-hidden="true">·</span>
+      <span>Latam Corporativo</span>
+    </div>
+  </div>
+
+  <div class="hero-scroll-cue" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span class="scroll-label">scroll</span>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative; min-height: 100vh; min-height: 100svh;
+    display: flex; align-items: center; overflow: hidden;
+  }
+
+  .hero-gradient {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background:
+      radial-gradient(circle 650px at var(--mx, 35%) var(--my, 45%),
+        rgba(153,94,49,0.45) 0%, transparent 60%),
+      radial-gradient(circle 800px at calc(var(--mx, 35%) + 25%) calc(var(--my, 45%) - 10%),
+        rgba(26,26,26,0.8) 0%, transparent 55%),
+      radial-gradient(circle 500px at calc(var(--mx, 35%) - 5%) calc(var(--my, 45%) + 30%),
+        rgba(163,163,145,0.12) 0%, transparent 50%);
+    filter: blur(60px);
+    transition: background 0.35s ease;
+  }
+
+  .hero-noise {
+    position: absolute; inset: 0; z-index: 2; opacity: 0.045;
+    mix-blend-mode: overlay; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px;
+  }
+
+  .hero-img-wrap { position: absolute; inset: 0; z-index: 0; }
+  .hero-bg-img   { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .hero-img-tint {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg,
+      rgba(26,26,26,0.8) 0%, rgba(26,26,26,0.65) 35%,
+      rgba(26,26,26,0.82) 75%, rgba(26,26,26,1) 100%);
+  }
+
+  .hero-inner {
+    position: relative; z-index: 3;
+    padding-top: 110px; padding-bottom: 80px;
+  }
+
+  .hero-kicker {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-family: var(--font-mono); font-size: 0.63rem; font-weight: 500;
+    letter-spacing: 0.2em; color: var(--ink-mute);
+    text-transform: uppercase; margin-bottom: 2rem;
+  }
+  .kicker-dot {
+    display: inline-block; width: 8px; height: 8px;
+    background: var(--stone); border-radius: 50%; flex-shrink: 0;
+    animation: pulseDot 2s ease-in-out infinite;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 7vw, 5.8rem);
+    font-weight: 900; line-height: 1.02; letter-spacing: -0.04em;
+    color: var(--ink); margin-bottom: 1.75rem; max-width: 18ch;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--stone-light); -webkit-text-fill-color: var(--stone-light);
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 1.7vw, 1.15rem); color: var(--ink-soft);
+    max-width: 52ch; line-height: 1.72; margin-bottom: 2.5rem;
+  }
+
+  .hero-actions {
+    display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem;
+  }
+
+  .hero-markets {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;
+    font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.09em;
+    color: var(--ink-mute); padding-top: 1.5rem; border-top: 1px solid var(--line);
+  }
+  .market-label { margin-right: 0.2rem; }
+  .sep { color: var(--line-2); }
+
+  .hero-scroll-cue {
+    position: absolute; bottom: 2.5rem; right: var(--gutter);
+    z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, transparent, var(--ink-mute));
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  .scroll-label {
+    font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.15em;
+    color: var(--ink-mute); writing-mode: vertical-lr; text-transform: uppercase;
+  }
+
+  @media (max-width: 539px) {
+    .hero-title { font-size: clamp(1.9rem, 8vw, 2.5rem); }
+    .hero-title br { display: none; }
+    .hero-actions { flex-direction: column; }
+    .hero-actions .btn { width: 100%; justify-content: center; }
+  }
+  @media (min-width: 720px) {
+    .hero-inner { padding-top: 110px; padding-bottom: 80px; }
+  }
+</style>

@@ -1,0 +1,90 @@
+---
+import content from '../data/content.json';
+const { footerSolutions, footerCompany } = content;
+const year = new Date().getFullYear();
+---
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <p class="footer-logo">TIRONECH</p>
+        <p class="footer-tagline">Ingeniería de alto valor. Resultados verificables.</p>
+        <p class="footer-markets">USA · Latam Corporativo · SaaS B2B · Fintech</p>
+      </div>
+      <nav class="footer-nav" aria-label="Navegación del pie de página">
+        <div class="footer-col">
+          <p class="footer-col-title">Soluciones</p>
+          <ul role="list">
+            {footerSolutions.map((link) => (
+              <li><a href={link.href}>{link.label}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">Empresa</p>
+          <ul role="list">
+            {footerCompany.map((link) => (
+              <li><a href={link.href}>{link.label}</a></li>
+            ))}
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {year} TIRONECH. Todos los derechos reservados.</p>
+      <p class="footer-motto">Juntos construimos algo diferente.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding: 4rem 0 2rem;
+    background: var(--copper);
+    border-top: 3px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.85);
+  }
+  .site-footer * { color: rgba(255,255,255,0.85); }
+
+  .footer-top { display: grid; gap: 3rem; margin-bottom: 3rem; }
+
+  .footer-logo {
+    font-family: var(--font-display); font-size: 1.4rem; font-weight: 900;
+    color: #fff !important; margin-bottom: 0.4rem;
+  }
+  .footer-tagline {
+    font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.55) !important; margin-bottom: 0.35rem;
+  }
+  .footer-markets { font-size: 0.78rem; color: rgba(255,255,255,0.45) !important; }
+
+  .footer-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 2rem;
+  }
+  .footer-col-title {
+    font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: rgba(255,255,255,0.45) !important;
+    margin-bottom: 1rem;
+  }
+  .footer-col ul { list-style: none; padding: 0; margin: 0; }
+  .footer-col li { margin-bottom: 0.5rem; }
+  .footer-col a {
+    font-size: 0.85rem; color: rgba(255,255,255,0.65) !important;
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-col a:hover { color: #fff !important; }
+
+  .footer-bottom {
+    display: flex; flex-wrap: wrap; justify-content: space-between;
+    align-items: center; gap: 0.75rem;
+    border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem;
+    font-size: 0.78rem; color: rgba(255,255,255,0.45) !important;
+  }
+  .footer-motto { font-style: italic; color: rgba(255,255,255,0.5) !important; }
+
+  @media (min-width: 720px) {
+    .footer-top { grid-template-columns: 1fr 1.8fr; align-items: start; }
+  }
+</style>
