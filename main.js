@@ -4,7 +4,7 @@
   /* ─── Safety wrapper ─────────────────────────────────────────── */
   function safe(fn, name) {
     try { fn(); }
-    catch (e) { console.warn("[ST] " + name + " failed:", e.message); }
+    catch (e) { console.warn("[TN] " + name + " failed:", e.message); }
   }
 
   /* ─── Helpers ────────────────────────────────────────────────── */
