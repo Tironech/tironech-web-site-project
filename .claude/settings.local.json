@@ -2,7 +2,17 @@
   "permissions": {
     "allow": [
       "mcp__Claude_Preview__preview_start",
-      "Bash(curl -s http://localhost:8765/styles.css)"
+      "Bash(curl -s http://localhost:8765/styles.css)",
+      "Bash(npm --version)",
+      "Bash(mkdir \"e:\\\\Tironech Projects\\\\Tironech Web Site Project\\\\tironech-astro\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4321/)",
+      "Bash(taskkill /PID 5820 /F)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:4321/)",
+      "Bash(cp \"e:/Tironech Projects/Tironech Web Site Project/tironech-web-site-project/assets/img/\"*.jpg \"e:/Tironech Projects/Tironech Web Site Project/tironech-astro/public/assets/img/\" && echo \"Images copied\" && ls \"e:/Tironech Projects/Tironech Web Site Project/tironech-astro/public/assets/img/\")"
+    ],
+    "additionalDirectories": [
+      "e:\\Tironech Projects\\Tironech Web Site Project",
+      "e:\\Tironech Projects\\Tironech Web Site Project\\tironech-web-site-project\\assets\\img"
     ]
   }
 }
