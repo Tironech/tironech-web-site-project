@@ -1,25 +1,22 @@
 ---
-import content from '../data/content.json';
-import '../styles/components/leadership.css';
-const { teamMembers } = content;
+import { ui } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+import contentEn from '../data/content.en.json';
+import contentEs from '../data/content.es.json';
+
+const lang = (Astro.currentLocale ?? 'en') as Lang;
+const t = ui[lang].leadership;
+const { teamMembers } = lang === 'es' ? contentEs : contentEn;
 ---
-<section class="leadership" id="leadership" aria-labelledby="leadership-title">
+<section class="leadership section section-1" id="leadership" aria-labelledby="leadership-title">
   <div class="container">
-    <p class="section-eyebrow text-center reveal">LIDERAZGO TÉCNICO</p>
-    <h2 class="section-title text-center reveal" id="leadership-title">
-      Respaldados por cofundadores y<br />
-      <em>talento especializado de élite</em>.
-    </h2>
-    <p class="leadership-intro text-center reveal">
-      Nuestro equipo directivo está conformado por los cofundadores de Tironech,
-      liderazgo especializado en diseño y desarrollo frontend, y expertos técnicos
-      con experiencia comprobada en QA avanzado, arquitectura de IA y DevOps.
-      Los perfiles individuales se publicarán próximamente.
-    </p>
+    <p class="section-eyebrow text-center reveal">{t.eyebrow}</p>
+    <h2 class="section-title text-center reveal" id="leadership-title" set:html={t.h2} />
+    <p class="leadership-intro text-center reveal">{t.intro}</p>
 
     <div class="team-grid">
       {teamMembers.map((m) => (
-        <div class="team-card reveal" aria-label="Perfil próximamente">
+        <div class="team-card reveal" aria-label={t.profileAriaLabel}>
           <div class:list={['team-avatar', { amber: m.avatarVariant === 'team-avatar--amber' }]} aria-hidden="true">
             <span>{m.initials}</span>
           </div>
@@ -33,8 +30,76 @@ const { teamMembers } = content;
     </div>
 
     <p class="coming-soon-note reveal">
-      <span class="coming-badge">Próximamente</span>
-      Perfiles completos con biografías, trayectoria y casos de impacto de cada miembro del equipo.
+      <span class="coming-badge">{t.comingSoon}</span>
+      {t.comingDesc}
     </p>
   </div>
 </section>
+
+<style>
+  .leadership {
+    padding-block: var(--section-pad);
+    position: relative; overflow: hidden;
+  }
+  .leadership::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(153,94,49,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 50%, rgba(163,163,145,0.05) 0%, transparent 60%);
+  }
+
+  .leadership-intro {
+    font-size: 1.05rem; color: var(--ink-mute); max-width: 62ch;
+    margin-inline: auto; line-height: 1.75; margin-bottom: 3.5rem;
+  }
+
+  .team-grid { display: grid; gap: 1.5rem; margin-bottom: 2.5rem; }
+
+  .team-card {
+    background: var(--bg-card); border: 1px solid var(--line);
+    border-radius: 14px; padding: 1.75rem;
+    display: flex; align-items: flex-start; gap: 1.25rem;
+    transition: border-color 0.25s, transform 0.25s var(--ease-out);
+  }
+  .team-card:hover { border-color: var(--copper-line); transform: translateY(-2px); }
+
+  .team-avatar {
+    width: 54px; height: 54px; border-radius: 50%; flex-shrink: 0;
+    background: rgba(153,94,49,0.25); border: 2px solid var(--copper-line);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .team-avatar.amber { background: var(--stone-tint); border-color: var(--stone-line); }
+  .team-avatar span {
+    font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em;
+    font-weight: 700; color: var(--copper-light);
+  }
+  .team-avatar.amber span { color: var(--stone-light); }
+
+  .team-role {
+    font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.15em;
+    color: var(--copper-light); text-transform: uppercase; margin-bottom: 0.3rem;
+  }
+  .team-area {
+    font-size: 0.95rem; font-weight: 700; color: var(--ink);
+    letter-spacing: -0.01em; margin-bottom: 0.3rem;
+  }
+  .team-focus {
+    font-family: var(--font-mono); font-size: 0.67rem;
+    color: var(--ink-mute); letter-spacing: 0.04em;
+  }
+
+  .coming-soon-note {
+    text-align: center; font-size: 0.88rem; color: var(--ink-mute);
+    display: flex; align-items: center; justify-content: center;
+    gap: 0.75rem; flex-wrap: wrap;
+  }
+  .coming-badge {
+    font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em;
+    color: var(--copper-light); border: 1px solid var(--copper-line);
+    border-radius: 20px; padding: 0.28rem 0.75rem;
+    background: var(--copper-tint);
+  }
+
+  @media (min-width: 720px)  { .team-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .team-grid { grid-template-columns: repeat(4, 1fr); } }
+</style>

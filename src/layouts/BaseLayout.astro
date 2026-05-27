@@ -1,5 +1,7 @@
 ---
 import SEO from '../components/SEO.astro';
+import { ui } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
 
 interface Props {
   title?:        string;
@@ -8,16 +10,19 @@ interface Props {
   ogImage?:      string;
 }
 
+const lang = (Astro.currentLocale ?? 'en') as Lang;
+const t = ui[lang];
+
 const {
-  title        = 'Tironech — Ingeniería de alto valor. QA, AI & Dev.',
-  description  = 'Tironech — Boutique de ingeniería de alto valor. QA avanzado con IA, desarrollo a medida y soluciones de Inteligencia Artificial para startups y empresas en USA y Latam.',
+  title        = t.meta.title,
+  description  = t.meta.description,
   canonicalURL,
   ogImage,
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -32,6 +37,11 @@ const {
     canonicalURL={canonicalURL}
     ogImage={ogImage}
   />
+
+  <!-- Alternate language links -->
+  <link rel="alternate" hreflang="en" href="https://tironech.com/" />
+  <link rel="alternate" hreflang="es" href="https://tironech.com/es/" />
+  <link rel="alternate" hreflang="x-default" href="https://tironech.com/" />
 
   <!-- Preload hero -->
   <link rel="preload" as="image" href="/assets/img/hero.jpg" fetchpriority="high" />

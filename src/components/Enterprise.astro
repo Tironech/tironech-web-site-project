@@ -1,23 +1,22 @@
 ---
-import content from '../data/content.json';
-import '../styles/components/enterprise.css';
-const { enterpriseServices } = content;
+import { ui } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+import contentEn from '../data/content.en.json';
+import contentEs from '../data/content.es.json';
+
+const lang = (Astro.currentLocale ?? 'en') as Lang;
+const t = ui[lang].enterprise;
+const { enterpriseServices } = lang === 'es' ? contentEs : contentEn;
 ---
 <section class="enterprise" id="enterprise" aria-labelledby="enterprise-title">
   <div class="enterprise-bg" aria-hidden="true">
-    <img src="/assets/img/enterprise-section.jpg" alt="Arquitectura de software e infraestructura de desarrollo para empresas enterprise" loading="lazy" decoding="async" />
+    <img src="/assets/img/enterprise-section.jpg" alt="" loading="lazy" decoding="async" />
     <div class="enterprise-tint"></div>
   </div>
   <div class="container">
-    <p class="section-eyebrow text-center reveal">SOLUCIONES ENTERPRISE · HIGH-TICKET</p>
-    <h2 class="section-title text-center reveal" id="enterprise-title">
-      Para empresas que requieren<br />
-      <em>liderazgo técnico senior</em>.
-    </h2>
-    <p class="section-sub text-center reveal">
-      Servicios de alto impacto para startups en USA que necesitan un CTO
-      y para industrias que quieren llevar la IA al piso de producción.
-    </p>
+    <p class="section-eyebrow text-center reveal">{t.eyebrow}</p>
+    <h2 class="section-title text-center reveal" id="enterprise-title" set:html={t.h2} />
+    <p class="section-sub text-center reveal">{t.sub}</p>
 
     <div class="enterprise-grid">
       {enterpriseServices.map((s) => (
@@ -38,7 +37,7 @@ const { enterpriseServices } = content;
           </div>
           <p class="ent-value">{s.value}</p>
           <p class="ent-desc">{s.desc}</p>
-          <ul class="ent-bullets" aria-label="Incluye">
+          <ul class="ent-bullets" aria-label={t.includesAriaLabel}>
             {s.features.map((f) => <li>{f}</li>)}
           </ul>
           <div class="ent-price">
@@ -53,3 +52,105 @@ const { enterpriseServices } = content;
     </div>
   </div>
 </section>
+
+<style>
+  .enterprise {
+    padding-block: var(--section-pad);
+    position: relative;
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .enterprise-bg { position: absolute; inset: 0; z-index: 0; }
+  .enterprise-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.07; filter: grayscale(1); }
+  .enterprise-tint { position: absolute; inset: 0; background: var(--bg-section); }
+  .enterprise > .container { position: relative; z-index: 1; }
+
+  .enterprise-grid { display: grid; gap: 2rem; }
+
+  .enterprise-card {
+    background: var(--bg-card);
+    border: 1px solid var(--copper-line);
+    border-radius: 16px; padding: 2.5rem;
+    display: flex; flex-direction: column; gap: 1.25rem;
+    position: relative; overflow: hidden;
+    transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+  }
+  .enterprise-card::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--copper) 0%, var(--copper-light) 100%);
+  }
+  .enterprise-card.ai::after {
+    background: linear-gradient(90deg, var(--stone) 0%, var(--stone-light) 100%);
+  }
+  .enterprise-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(153,94,49,0.2); }
+
+  .ent-tag {
+    font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.18em;
+    color: var(--copper-light); text-transform: uppercase;
+    border: 1px solid var(--copper-line); border-radius: 20px;
+    padding: 0.28rem 0.75rem; width: fit-content;
+    background: var(--copper-tint);
+  }
+  .ent-tag.amber {
+    color: var(--stone-light); border-color: var(--stone-line);
+    background: var(--stone-tint);
+  }
+
+  .ent-header { display: flex; align-items: flex-start; gap: 1.25rem; }
+  .ent-icon   { font-size: 2rem; color: var(--copper-light); flex-shrink: 0; margin-top: 0.15rem; }
+  .ent-icon.amber { color: var(--stone-light); }
+
+  .ent-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800;
+    line-height: 1.08; color: var(--ink); margin-bottom: 0.4rem;
+  }
+  .ent-target {
+    font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.06em;
+    color: var(--ink-mute);
+  }
+
+  .ent-value {
+    font-size: 1.1rem; font-weight: 700; color: var(--copper-light);
+    font-style: italic; line-height: 1.4;
+    border-left: 3px solid var(--copper); padding-left: 1rem;
+  }
+  .enterprise-card.ai .ent-value { color: var(--stone-light); border-color: var(--stone); }
+
+  .ent-desc { font-size: 0.92rem; color: var(--ink-soft); line-height: 1.68; }
+
+  .ent-bullets { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .ent-bullets li {
+    font-size: 0.88rem; color: var(--ink-mute);
+    padding-left: 1.3rem; position: relative; line-height: 1.55;
+  }
+  .ent-bullets li::before {
+    content: '✓'; position: absolute; left: 0;
+    color: var(--copper-light); font-size: 0.75rem; font-weight: 700;
+  }
+  .enterprise-card.ai .ent-bullets li::before { color: var(--stone-light); }
+
+  .ent-price {
+    padding: 1.25rem;
+    background: rgba(153,94,49,0.12);
+    border-radius: 10px; border: 1px solid var(--copper-line);
+  }
+  .enterprise-card.ai .ent-price {
+    background: var(--stone-tint); border-color: var(--stone-line);
+  }
+  .ent-price-val {
+    font-family: var(--font-display); font-size: 1.5rem; font-weight: 900;
+    letter-spacing: -0.03em; color: var(--ink); margin-bottom: 0.25rem;
+  }
+  .ent-price-model {
+    font-family: var(--font-mono); font-size: 0.68rem;
+    color: var(--ink-mute); letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 539px) {
+    .enterprise-card { padding: 1.75rem 1.25rem; }
+  }
+  @media (min-width: 720px) {
+    .enterprise-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
