@@ -89,12 +89,6 @@ const { contactSteps } = lang === 'es' ? contentEs : contentEn;
           </ol>
         </div>
 
-        <div class="contact-direct">
-          <p class="contact-direct-label">{t.directLabel}</p>
-          <a href="mailto:raul.gomez@tironech.com" class="contact-email">
-            raul.gomez@tironech.com
-          </a>
-        </div>
       </div>
     </div>
   </div>
@@ -173,24 +167,7 @@ const { contactSteps } = lang === 'es' ? contentEs : contentEn;
   .contact-steps strong { display: block; font-size: 0.9rem; color: var(--ink); margin-bottom: 0.25rem; }
   .contact-steps p { font-size: 0.82rem; color: var(--ink-mute); line-height: 1.6; margin: 0; }
 
-  .contact-direct {
-    background: var(--bg-card); border: 1px solid var(--copper-line);
-    border-radius: 14px; padding: 1.75rem;
-    display: flex; flex-direction: column; gap: 0.5rem; align-items: center;
-    text-align: center;
-  }
-  .contact-direct-label {
-    font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.15em;
-    color: var(--ink-mute); text-transform: uppercase;
-  }
-  .contact-email {
-    font-family: var(--font-mono); font-size: 0.95rem; color: var(--copper-light);
-    border-bottom: 1px solid var(--copper-line); padding-bottom: 1px;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  .contact-email:hover { color: var(--copper-hover); border-color: var(--copper-hover); }
-
-  @media (max-width: 539px) {
+@media (max-width: 539px) {
     .contact-form    { padding: 1.75rem 1.25rem; }
     .contact-promise { padding: 1.5rem 1.25rem; }
   }
