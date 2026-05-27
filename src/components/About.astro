@@ -1,8 +1,9 @@
 ---
 import content from '../data/content.json';
+import '../styles/components/about.css';
 const { stats } = content;
 ---
-<section class="about section section-1" id="about" aria-labelledby="about-title">
+<section class="about" id="about" aria-labelledby="about-title">
   <div class="container">
     <div class="about-grid">
       <div class="about-left">
@@ -47,61 +48,3 @@ const { stats } = content;
     </ul>
   </div>
 </section>
-
-<style>
-  .about {
-    padding-block: var(--section-pad);
-    border-bottom: 1px solid var(--line);
-  }
-  .about-grid { display: grid; gap: 3rem; }
-
-  .about-body {
-    font-size: clamp(1.05rem, 1.6vw, 1.18rem);
-    color: var(--ink-soft); line-height: 1.75; margin-bottom: 1.25rem;
-  }
-  .about-sub {
-    font-size: 1rem; color: var(--ink-mute); line-height: 1.72; margin-bottom: 1.75rem;
-  }
-  .about-badge {
-    display: inline-flex; align-items: center; gap: 0.75rem;
-    font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em;
-    color: var(--copper-light); border: 1px solid var(--copper-line);
-    border-radius: 30px; padding: 0.5rem 1rem;
-    background: var(--copper-tint); flex-wrap: wrap;
-  }
-  .badge-dot {
-    width: 7px; height: 7px; background: var(--copper-light);
-    border-radius: 50%; flex-shrink: 0; animation: pulseDot 2.5s ease-in-out infinite;
-  }
-
-  .stats-row {
-    display: grid; grid-template-columns: repeat(2, 1fr);
-    gap: 1px; background: var(--line);
-    border-radius: 12px; overflow: hidden;
-    list-style: none; padding: 0; margin-top: 4rem;
-  }
-  .stat-pill {
-    background: var(--bg-card); padding: 2rem 1.5rem;
-    display: flex; flex-direction: column; align-items: center;
-    gap: 0.5rem; text-align: center;
-  }
-  .stat-num {
-    font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.5rem);
-    font-weight: 900; letter-spacing: -0.04em; line-height: 1;
-    color: var(--copper-light);
-  }
-  .stat-num.stone { color: var(--stone-light); }
-  .stat-lbl {
-    font-size: 0.78rem; font-weight: 500; color: var(--ink-mute); line-height: 1.5;
-  }
-
-  @media (max-width: 539px) {
-    .stat-num { font-size: clamp(1.8rem, 9vw, 2.2rem); }
-  }
-  @media (min-width: 540px) {
-    .stats-row { grid-template-columns: repeat(4, 1fr); }
-  }
-  @media (min-width: 720px) {
-    .about-grid { grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: start; }
-  }
-</style>
