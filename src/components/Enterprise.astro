@@ -1,6 +1,12 @@
 ---
-import content from '../data/content.json';
-const { enterpriseServices } = content;
+import { ui } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+import contentEn from '../data/content.en.json';
+import contentEs from '../data/content.es.json';
+
+const lang = (Astro.currentLocale ?? 'en') as Lang;
+const t = ui[lang].enterprise;
+const { enterpriseServices } = lang === 'es' ? contentEs : contentEn;
 ---
 <section class="enterprise" id="enterprise" aria-labelledby="enterprise-title">
   <div class="enterprise-bg" aria-hidden="true">
@@ -8,15 +14,9 @@ const { enterpriseServices } = content;
     <div class="enterprise-tint"></div>
   </div>
   <div class="container">
-    <p class="section-eyebrow text-center reveal">SOLUCIONES ENTERPRISE · HIGH-TICKET</p>
-    <h2 class="section-title text-center reveal" id="enterprise-title">
-      Para empresas que requieren<br />
-      <em>liderazgo técnico senior</em>.
-    </h2>
-    <p class="section-sub text-center reveal">
-      Servicios de alto impacto para startups en USA que necesitan un CTO
-      y para industrias que quieren llevar la IA al piso de producción.
-    </p>
+    <p class="section-eyebrow text-center reveal">{t.eyebrow}</p>
+    <h2 class="section-title text-center reveal" id="enterprise-title" set:html={t.h2} />
+    <p class="section-sub text-center reveal">{t.sub}</p>
 
     <div class="enterprise-grid">
       {enterpriseServices.map((s) => (
@@ -37,7 +37,7 @@ const { enterpriseServices } = content;
           </div>
           <p class="ent-value">{s.value}</p>
           <p class="ent-desc">{s.desc}</p>
-          <ul class="ent-bullets" aria-label="Incluye">
+          <ul class="ent-bullets" aria-label={t.includesAriaLabel}>
             {s.features.map((f) => <li>{f}</li>)}
           </ul>
           <div class="ent-price">

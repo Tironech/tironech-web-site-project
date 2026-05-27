@@ -1,0 +1,226 @@
+{
+  "entryServices": [
+    {
+      "id": "qa-automation",
+      "tag": "ENTRY POINT",
+      "tagVariant": "",
+      "icon": "◈",
+      "iconVariant": "",
+      "featured": false,
+      "title": "QA Consulting & Automation",
+      "target": "B2B SaaS, Fintech and Startups with production bugs",
+      "pain": "Is your manual QA not scaling with your release velocity? Are bugs reaching production before you can catch them?",
+      "desc": "We audit your quality process, design the automation framework and eliminate bugs before they reach your users.",
+      "features": [
+        "QA audit and action plan in 5 days",
+        "Automation with Playwright / Cypress / Selenium",
+        "CI/CD integration for continuous quality",
+        "Coverage reports and quality KPIs"
+      ],
+      "priceFrom": "From",
+      "priceVal": "$1,800 USD/mo",
+      "priceModel": "Project + Retainer",
+      "ctaLabel": "Schedule QA session →",
+      "ctaVariant": "btn-cta"
+    },
+    {
+      "id": "ai-quality",
+      "tag": "RECOMMENDED",
+      "tagVariant": "card-tag--featured",
+      "icon": "⊕",
+      "iconVariant": "card-icon--amber",
+      "featured": true,
+      "title": "AI Quality Shield",
+      "target": "Companies with complex UIs and frequent releases",
+      "pain": "Every release is a risk. Every bug visible to the customer costs money, time and reputation.",
+      "desc": "AI-powered QA: automated visual testing, regression detection and intelligent coverage of your product's most critical cases.",
+      "features": [
+        "Visual AI testing and regression detection",
+        "Intelligent coverage of critical user journeys",
+        "Automatic pre-release impact analysis",
+        "Real-time product health dashboard"
+      ],
+      "priceFrom": "Project from",
+      "priceVal": "$4,500 USD",
+      "priceModel": "+ Retainer $3,500/mo",
+      "ctaLabel": "Request AI Shield demo →",
+      "ctaVariant": "btn-amber"
+    },
+    {
+      "id": "web-apps",
+      "tag": "DEVELOPMENT",
+      "tagVariant": "",
+      "icon": "◎",
+      "iconVariant": "",
+      "featured": false,
+      "title": "Web & Mobile App Development",
+      "target": "Companies that need solid digital platforms",
+      "pain": "Your digital presence doesn't match your company's level. You need a platform that converts, scales and stays up.",
+      "desc": "We design and develop websites and mobile apps with clean architecture, optimized for performance and conversion from day one.",
+      "features": [
+        "Strategic UX/UI design focused on conversion",
+        "Frontend and backend development with clean code",
+        "Native and hybrid iOS and Android apps",
+        "Deployment, CI/CD and post-launch support"
+      ],
+      "priceFrom": "From",
+      "priceVal": "$3,000 USD",
+      "priceModel": "Fixed project",
+      "ctaLabel": "Get a project quote →",
+      "ctaVariant": "btn-cta"
+    }
+  ],
+  "enterpriseServices": [
+    {
+      "id": "fractional-cto",
+      "tag": "HIGH-TICKET",
+      "tagVariant": "",
+      "icon": "⬡",
+      "iconVariant": "",
+      "featured": false,
+      "title": "Fractional CTO + Dev Team",
+      "target": "US Startups without a senior technical team",
+      "value": "The senior CTO you need, without the cost or risk of a full-time hire.",
+      "desc": "Strategic technical leadership plus a turnkey development team. We define architecture, set standards, deliver code and scale your product alongside you.",
+      "features": [
+        "Product architecture and complete technical roadmap",
+        "Developer team selection and leadership",
+        "Technology stack definition and code standards",
+        "PR reviews, quality gates and technical debt management",
+        "Direct communication with founders and investors"
+      ],
+      "priceVal": "$5,000 – $12,000 USD/mo",
+      "priceModel": "Monthly retainer",
+      "ctaLabel": "Talk about my technical team",
+      "ctaVariant": "btn-cta"
+    },
+    {
+      "id": "edge-ai",
+      "tag": "ENTERPRISE",
+      "tagVariant": "ent-tag--amber",
+      "icon": "⬘",
+      "iconVariant": "ent-icon--amber",
+      "featured": true,
+      "title": "Edge AI Vision Sprint",
+      "target": "Industry, manufacturing and logistics",
+      "value": "Computer vision and AI in production in weeks, not months.",
+      "desc": "We deploy Computer Vision and Edge AI solutions directly into your production line, logistics or industrial quality control, with measurable results from the first sprint.",
+      "features": [
+        "Edge AI solution diagnosis and design in 1 week",
+        "Computer Vision development and integration",
+        "Deployment on edge hardware (Nvidia Jetson, etc.)",
+        "Real-time monitoring dashboard and alerts",
+        "Usage license + monthly technical support included"
+      ],
+      "priceVal": "$8,000 – $25,000 USD",
+      "priceModel": "Project + License $2,000/mo",
+      "ctaLabel": "Explore Edge AI for my industry",
+      "ctaVariant": "btn-amber"
+    }
+  ],
+  "whyItems": [
+    {
+      "icon": "↓",
+      "iconVariant": "",
+      "title": "Fewer production bugs",
+      "desc": "From the first week of engagement, your team catches more errors before they reach your users."
+    },
+    {
+      "icon": "↑",
+      "iconVariant": "why-icon--amber",
+      "title": "Faster, safer releases",
+      "desc": "Test automation and CI/CD that let you ship more often without sacrificing stability."
+    },
+    {
+      "icon": "$",
+      "iconVariant": "",
+      "title": "Senior CTO without the full-time cost",
+      "desc": "Strategic technical leadership at a fraction of the cost of hiring a full-time CTO in the US."
+    },
+    {
+      "icon": "⬡",
+      "iconVariant": "why-icon--amber",
+      "title": "Architecture without technical debt",
+      "desc": "We design systems that scale from the first sprint, without accumulating problems that slow your growth."
+    },
+    {
+      "icon": "◈",
+      "iconVariant": "",
+      "title": "AI-powered QA: more coverage, fewer hours",
+      "desc": "Artificial intelligence that identifies the most critical test cases and maximizes your coverage automatically."
+    },
+    {
+      "icon": "✓",
+      "iconVariant": "why-icon--amber",
+      "title": "Clean and auditable code",
+      "desc": "Documented, maintainable and reviewable at any time. No black box, no hidden dependencies."
+    }
+  ],
+  "stats": [
+    { "value": "6x",   "target": "6",   "suffix": "x", "stone": false, "label": "Fewer production bugs" },
+    { "value": "40%",  "target": "40",  "suffix": "%", "stone": true,  "label": "Technical downtime reduction" },
+    { "value": "3",    "target": "3",   "suffix": "",  "stone": false, "label": "Weeks to onboard" },
+    { "value": "100%", "target": "100", "suffix": "%", "stone": true,  "label": "Projects delivered on time" }
+  ],
+  "teamMembers": [
+    {
+      "initials": "PM",
+      "avatarVariant": "",
+      "role": "Co-Founder",
+      "area": "Product Manager & Business Development Lead",
+      "focus": "Commercial strategy · Product management · Partnerships"
+    },
+    {
+      "initials": "UX",
+      "avatarVariant": "team-avatar--amber",
+      "role": "Co-Founder",
+      "area": "UX Designer & Brand Visual Lead",
+      "focus": "Visual identity · UX/UI · Sales materials"
+    },
+    {
+      "initials": "DEV",
+      "avatarVariant": "",
+      "role": "Lead Engineer",
+      "area": "Lead Developer & DevOps Engineer",
+      "focus": "Backend · Frontend · CI/CD · Cloud Infrastructure"
+    },
+    {
+      "initials": "QA",
+      "avatarVariant": "team-avatar--amber",
+      "role": "Technical Lead",
+      "area": "QA Lead & AI Architect",
+      "focus": "AI Architecture · QA Automation · Edge AI · Computer Vision"
+    }
+  ],
+  "contactSteps": [
+    {
+      "num": "01",
+      "title": "We review your case",
+      "desc": "In less than 24 hours we analyze your problem and determine which solution fits best."
+    },
+    {
+      "num": "02",
+      "title": "Discovery session (30 min)",
+      "desc": "Direct technical conversation with the area expert. No sales pitch."
+    },
+    {
+      "num": "03",
+      "title": "Free initial diagnosis",
+      "desc": "We deliver a first analysis of your technical situation with concrete action items."
+    }
+  ],
+  "markets": ["B2B SaaS", "Fintech", "US Startups", "Latam Enterprise"],
+  "footerSolutions": [
+    { "href": "#qa-automation", "label": "QA Consulting & Automation" },
+    { "href": "#ai-quality",    "label": "AI Quality Shield" },
+    { "href": "#web-apps",      "label": "Web & Mobile Apps" },
+    { "href": "#fractional-cto","label": "Fractional CTO + Dev Team" },
+    { "href": "#edge-ai",       "label": "Edge AI Vision Sprint" }
+  ],
+  "footerCompany": [
+    { "href": "#about",      "label": "About us" },
+    { "href": "#why-us",     "label": "Why Tironech" },
+    { "href": "#leadership", "label": "Team" },
+    { "href": "#contact",    "label": "Contact" }
+  ]
+}

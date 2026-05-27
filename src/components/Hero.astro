@@ -1,5 +1,12 @@
 ---
-// Hero — full-viewport con gradiente reactivo al mouse
+import { ui } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+import contentEn from '../data/content.en.json';
+import contentEs from '../data/content.es.json';
+
+const lang = (Astro.currentLocale ?? 'en') as Lang;
+const t = ui[lang].hero;
+const { markets } = lang === 'es' ? contentEs : contentEn;
 ---
 <section class="hero" id="home" aria-labelledby="hero-title">
   <div class="hero-gradient" data-mouse-gradient aria-hidden="true"></div>
@@ -19,40 +26,35 @@
   <div class="container hero-inner">
     <p class="hero-kicker">
       <span class="kicker-dot" aria-hidden="true"></span>
-      <span>BOUTIQUE DE INGENIERÍA · B2B · USA &amp; LATAM</span>
+      <span>{t.kicker}</span>
     </p>
 
     <h1 class="hero-title" id="hero-title">
-      Bugs en producción.<br />
-      Sin equipo senior.<br />
-      Tecnología que no escala.<br />
-      <em>Nosotros resolvemos los tres.</em>
+      {t.h1Line1}<br />
+      {t.h1Line2}<br />
+      {t.h1Line3}<br />
+      <em>{t.h1Em}</em>
     </h1>
 
-    <p class="hero-sub">
-      QA avanzado con IA, arquitectura sin deuda técnica y equipos de
-      desarrollo llave en mano. Para startups y empresas que no pueden
-      darse el lujo de fallar en producción.
-    </p>
+    <p class="hero-sub">{t.sub}</p>
 
     <div class="hero-actions">
       <a href="#contact" class="btn btn-cta">
-        Agendar sesión de descubrimiento <span class="btn-arrow" aria-hidden="true">→</span>
+        {t.ctaPrimary} <span class="btn-arrow" aria-hidden="true">→</span>
       </a>
       <a href="#entry" class="btn btn-ghost">
-        Ver soluciones <span class="btn-arrow" aria-hidden="true">↓</span>
+        {t.ctaSecondary} <span class="btn-arrow" aria-hidden="true">↓</span>
       </a>
     </div>
 
-    <div class="hero-markets" aria-label="Mercados que atendemos">
-      <span class="market-label">Atendemos:</span>
-      <span>SaaS B2B</span>
-      <span class="sep" aria-hidden="true">·</span>
-      <span>Fintech</span>
-      <span class="sep" aria-hidden="true">·</span>
-      <span>Startups USA</span>
-      <span class="sep" aria-hidden="true">·</span>
-      <span>Latam Corporativo</span>
+    <div class="hero-markets" aria-label={t.marketsAriaLabel}>
+      <span class="market-label">{t.marketsLabel}</span>
+      {markets.map((m, i) => (
+        <>
+          <span>{m}</span>
+          {i < markets.length - 1 && <span class="sep" aria-hidden="true">·</span>}
+        </>
+      ))}
     </div>
   </div>
 

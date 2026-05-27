@@ -1,24 +1,22 @@
 ---
-import content from '../data/content.json';
-const { teamMembers } = content;
+import { ui } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+import contentEn from '../data/content.en.json';
+import contentEs from '../data/content.es.json';
+
+const lang = (Astro.currentLocale ?? 'en') as Lang;
+const t = ui[lang].leadership;
+const { teamMembers } = lang === 'es' ? contentEs : contentEn;
 ---
 <section class="leadership section section-1" id="leadership" aria-labelledby="leadership-title">
   <div class="container">
-    <p class="section-eyebrow text-center reveal">LIDERAZGO TÉCNICO</p>
-    <h2 class="section-title text-center reveal" id="leadership-title">
-      Respaldados por cofundadores y<br />
-      <em>talento especializado de élite</em>.
-    </h2>
-    <p class="leadership-intro text-center reveal">
-      Nuestro equipo directivo está conformado por los cofundadores de Tironech,
-      liderazgo especializado en diseño y desarrollo frontend, y expertos técnicos
-      con experiencia comprobada en QA avanzado, arquitectura de IA y DevOps.
-      Los perfiles individuales se publicarán próximamente.
-    </p>
+    <p class="section-eyebrow text-center reveal">{t.eyebrow}</p>
+    <h2 class="section-title text-center reveal" id="leadership-title" set:html={t.h2} />
+    <p class="leadership-intro text-center reveal">{t.intro}</p>
 
     <div class="team-grid">
       {teamMembers.map((m) => (
-        <div class="team-card reveal" aria-label="Perfil próximamente">
+        <div class="team-card reveal" aria-label={t.profileAriaLabel}>
           <div class:list={['team-avatar', { amber: m.avatarVariant === 'team-avatar--amber' }]} aria-hidden="true">
             <span>{m.initials}</span>
           </div>
@@ -32,8 +30,8 @@ const { teamMembers } = content;
     </div>
 
     <p class="coming-soon-note reveal">
-      <span class="coming-badge">Próximamente</span>
-      Perfiles completos con biografías, trayectoria y casos de impacto de cada miembro del equipo.
+      <span class="coming-badge">{t.comingSoon}</span>
+      {t.comingDesc}
     </p>
   </div>
 </section>

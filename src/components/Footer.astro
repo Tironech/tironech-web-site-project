@@ -1,6 +1,12 @@
 ---
-import content from '../data/content.json';
-const { footerSolutions, footerCompany } = content;
+import { ui } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+import contentEn from '../data/content.en.json';
+import contentEs from '../data/content.es.json';
+
+const lang = (Astro.currentLocale ?? 'en') as Lang;
+const t = ui[lang].footer;
+const { footerSolutions, footerCompany } = lang === 'es' ? contentEs : contentEn;
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer" role="contentinfo">
@@ -8,12 +14,12 @@ const year = new Date().getFullYear();
     <div class="footer-top">
       <div class="footer-brand">
         <p class="footer-logo">TIRONECH</p>
-        <p class="footer-tagline">Ingeniería de alto valor. Resultados verificables.</p>
-        <p class="footer-markets">USA · Latam Corporativo · SaaS B2B · Fintech</p>
+        <p class="footer-tagline">{t.tagline}</p>
+        <p class="footer-markets">{t.markets}</p>
       </div>
-      <nav class="footer-nav" aria-label="Navegación del pie de página">
+      <nav class="footer-nav" aria-label={t.navAriaLabel}>
         <div class="footer-col">
-          <p class="footer-col-title">Soluciones</p>
+          <p class="footer-col-title">{t.solutionsTitle}</p>
           <ul role="list">
             {footerSolutions.map((link) => (
               <li><a href={link.href}>{link.label}</a></li>
@@ -21,7 +27,7 @@ const year = new Date().getFullYear();
           </ul>
         </div>
         <div class="footer-col">
-          <p class="footer-col-title">Empresa</p>
+          <p class="footer-col-title">{t.companyTitle}</p>
           <ul role="list">
             {footerCompany.map((link) => (
               <li><a href={link.href}>{link.label}</a></li>
@@ -31,8 +37,8 @@ const year = new Date().getFullYear();
       </nav>
     </div>
     <div class="footer-bottom">
-      <p>&copy; {year} TIRONECH. Todos los derechos reservados.</p>
-      <p class="footer-motto">Juntos construimos algo diferente.</p>
+      <p>&copy; {year} TIRONECH. {t.copyright}</p>
+      <p class="footer-motto">{t.motto}</p>
     </div>
   </div>
 </footer>

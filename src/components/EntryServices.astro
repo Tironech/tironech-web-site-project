@@ -1,19 +1,19 @@
 ---
-import content from '../data/content.json';
-const { entryServices } = content;
+import { ui } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+import contentEn from '../data/content.en.json';
+import contentEs from '../data/content.es.json';
+
+const lang = (Astro.currentLocale ?? 'en') as Lang;
+const t = ui[lang].entryServices;
+const { entryServices } = lang === 'es' ? contentEs : contentEn;
 ---
 <section class="entry-services section section-2" id="entry" aria-labelledby="entry-title">
   <div class="entry-accent" aria-hidden="true"></div>
   <div class="container">
-    <p class="section-eyebrow text-center reveal">SOLUCIONES DE ENTRADA</p>
-    <h2 class="section-title text-center reveal" id="entry-title">
-      Empiece a ver resultados<br />
-      <em>en las primeras dos semanas</em>.
-    </h2>
-    <p class="section-sub text-center reveal">
-      Tres servicios diseñados para generar valor rápido con baja fricción
-      de compra y resultados medibles desde el primer mes.
-    </p>
+    <p class="section-eyebrow text-center reveal">{t.eyebrow}</p>
+    <h2 class="section-title text-center reveal" id="entry-title" set:html={t.h2} />
+    <p class="section-sub text-center reveal">{t.sub}</p>
 
     <div class="entry-grid">
       {entryServices.map((s) => (
@@ -27,10 +27,10 @@ const { entryServices } = content;
           <h3 class="card-title" id={`${s.id}-title`}
             set:html={s.title.replace('&', '&amp;')}
           />
-          <p class="card-target">Para: <strong>{s.target}</strong></p>
+          <p class="card-target">{t.forLabel} <strong>{s.target}</strong></p>
           <p class="card-pain">{s.pain}</p>
           <p class="card-desc">{s.desc}</p>
-          <ul class="card-features" aria-label="Características">
+          <ul class="card-features" aria-label={t.featuresAriaLabel}>
             {s.features.map((f) => <li>{f}</li>)}
           </ul>
           <div class="card-price">

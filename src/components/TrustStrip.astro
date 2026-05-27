@@ -1,8 +1,14 @@
 ---
-import content from '../data/content.json';
-const { markets } = content;
+import { ui } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+import contentEn from '../data/content.en.json';
+import contentEs from '../data/content.es.json';
+
+const lang = (Astro.currentLocale ?? 'en') as Lang;
+const t = ui[lang].trustStrip;
+const { markets } = lang === 'es' ? contentEs : contentEn;
 ---
-<div class="trust-strip" aria-label="Mercados que atendemos">
+<div class="trust-strip" aria-label={t.ariaLabel}>
   {markets.map((m, i) => (
     <>
       <span>{m}</span>

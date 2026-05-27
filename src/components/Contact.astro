@@ -1,6 +1,12 @@
 ---
-import content from '../data/content.json';
-const { contactSteps } = content;
+import { ui } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+import contentEn from '../data/content.en.json';
+import contentEs from '../data/content.es.json';
+
+const lang = (Astro.currentLocale ?? 'en') as Lang;
+const t = ui[lang].contact;
+const { contactSteps } = lang === 'es' ? contentEs : contentEn;
 ---
 <section class="contact section section-2" id="contact" aria-labelledby="contact-title">
   <div class="contact-hero-bg" aria-hidden="true">
@@ -8,78 +14,67 @@ const { contactSteps } = content;
     <div class="contact-tint"></div>
   </div>
   <div class="container">
-    <p class="section-eyebrow text-center reveal">AGENDAR UNA SESIÓN</p>
-    <h2 class="section-title text-center reveal" id="contact-title">
-      Cuéntenos su problema técnico.<br />
-      <em>Le decimos exactamente cómo lo resolvemos</em>.
-    </h2>
-    <p class="section-sub text-center reveal">
-      Sesión de descubrimiento gratuita de 30 minutos. Sin compromiso.
-      Le entregamos un diagnóstico inicial en la primera llamada.
-    </p>
+    <p class="section-eyebrow text-center reveal">{t.eyebrow}</p>
+    <h2 class="section-title text-center reveal" id="contact-title" set:html={t.h2} />
+    <p class="section-sub text-center reveal">{t.sub}</p>
 
     <div class="contact-wrap">
       <form class="contact-form reveal" name="tironech-contact" novalidate>
 
         <div class="form-row-2">
           <div class="form-group">
-            <label class="form-label" for="ct-name">Nombre completo *</label>
+            <label class="form-label" for="ct-name">{t.nameLbl}</label>
             <input class="form-input" id="ct-name" type="text" name="name"
-              placeholder="Ej. Juan García" required autocomplete="name" />
+              placeholder={t.namePh} required autocomplete="name" />
           </div>
           <div class="form-group">
-            <label class="form-label" for="ct-company">Empresa *</label>
+            <label class="form-label" for="ct-company">{t.companyLbl}</label>
             <input class="form-input" id="ct-company" type="text" name="company"
-              placeholder="Ej. StartupXYZ" required autocomplete="organization" />
+              placeholder={t.companyPh} required autocomplete="organization" />
           </div>
         </div>
 
         <div class="form-row-2">
           <div class="form-group">
-            <label class="form-label" for="ct-email">Email corporativo *</label>
+            <label class="form-label" for="ct-email">{t.emailLbl}</label>
             <input class="form-input" id="ct-email" type="email" name="email"
-              placeholder="juan@suempresa.com" required autocomplete="email" />
+              placeholder={t.emailPh} required autocomplete="email" />
           </div>
           <div class="form-group">
-            <label class="form-label" for="ct-market">País / Mercado</label>
+            <label class="form-label" for="ct-market">{t.marketLbl}</label>
             <input class="form-input" id="ct-market" type="text" name="market"
-              placeholder="Ej. USA, Colombia, México…" autocomplete="country" />
+              placeholder={t.marketPh} autocomplete="country" />
           </div>
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="ct-service">¿Qué solución le interesa? *</label>
+          <label class="form-label" for="ct-service">{t.serviceLbl}</label>
           <select class="form-input form-select" id="ct-service" name="service" required>
-            <option value="" disabled selected>Seleccione una solución</option>
-            <option value="qa">Soluciones de QA (Consulting &amp; Automation)</option>
-            <option value="ai-shield">AI Quality Shield</option>
-            <option value="web-app">Desarrollo Web / App Móvil</option>
-            <option value="fractional-cto">Fractional CTO + Dev Team</option>
-            <option value="edge-ai">Edge AI Vision Sprint</option>
-            <option value="otros">Otros / No estoy seguro</option>
+            <option value="" disabled selected>{t.serviceDefault}</option>
+            {t.serviceOptions.map((opt) => (
+              <option value={opt.value}>{opt.label}</option>
+            ))}
           </select>
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="ct-problem">Describa su problema técnico actual *</label>
+          <label class="form-label" for="ct-problem">{t.problemLbl}</label>
           <textarea class="form-input form-textarea" id="ct-problem" name="problem"
-            placeholder="Ej. Tenemos bugs frecuentes en producción, nuestro QA manual no escala y los releases toman demasiado tiempo…"
+            placeholder={t.problemPh}
             rows="4" required></textarea>
         </div>
 
         <button type="submit" class="btn btn-cta btn-full btn-lg">
-          Agendar sesión de descubrimiento gratuita
+          {t.submitBtn}
           <span class="btn-arrow" aria-hidden="true">→</span>
         </button>
 
-        <p class="form-disclaimer">
-          Respondemos en menos de 24 horas hábiles. Sin ventas agresivas — solo una conversación técnica honesta.
-        </p>
+        <p class="form-disclaimer">{t.disclaimer}</p>
       </form>
 
       <div class="contact-side reveal">
         <div class="contact-promise">
-          <h3>¿Qué ocurre después de enviar el formulario?</h3>
+          <h3>{t.promiseTitle}</h3>
           <ol class="contact-steps">
             {contactSteps.map((step) => (
               <li>
@@ -94,7 +89,7 @@ const { contactSteps } = content;
         </div>
 
         <div class="contact-direct">
-          <p class="contact-direct-label">Contacto directo:</p>
+          <p class="contact-direct-label">{t.directLabel}</p>
           <a href="mailto:contact@tironech.com" class="contact-email">
             contact@tironech.com
           </a>
@@ -135,7 +130,7 @@ const { contactSteps } = content;
     background: var(--bg-2); border: 1px solid var(--line-2);
     border-radius: 8px; padding: 0.75rem 1rem;
     color: var(--ink); font-family: var(--font-body);
-    font-size: 1rem; /* ≥16px → evita zoom automático en iOS */
+    font-size: 1rem;
     transition: border-color 0.2s, box-shadow 0.2s;
     -webkit-appearance: none; appearance: none; width: 100%;
     min-height: 48px;

@@ -1,14 +1,17 @@
 ---
-import content from '../data/content.json';
-const { whyItems } = content;
+import { ui } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+import contentEn from '../data/content.en.json';
+import contentEs from '../data/content.es.json';
+
+const lang = (Astro.currentLocale ?? 'en') as Lang;
+const t = ui[lang].whyUs;
+const { whyItems } = lang === 'es' ? contentEs : contentEn;
 ---
 <section class="why-us section section-2" id="why-us" aria-labelledby="why-title">
   <div class="container">
-    <p class="section-eyebrow text-center reveal">POR QUÉ ELEGIR TIRONECH</p>
-    <h2 class="section-title text-center reveal" id="why-title">
-      Lo que diferencia a una boutique<br />
-      de ingeniería de <em>una agencia genérica</em>.
-    </h2>
+    <p class="section-eyebrow text-center reveal">{t.eyebrow}</p>
+    <h2 class="section-title text-center reveal" id="why-title" set:html={t.h2} />
 
     <div class="why-grid">
       {whyItems.map((item) => (

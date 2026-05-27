@@ -1,8 +1,13 @@
 ---
-// Nav — fijo, con estado scrolled gestionado por main.js
+import { ui } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+
+const lang = (Astro.currentLocale ?? 'en') as Lang;
+const t = ui[lang].nav;
+const ls = ui[lang].langSwitch;
 ---
 <header class="site-nav" role="banner">
-  <nav class="nav-inner container" aria-label="Navegación principal">
+  <nav class="nav-inner container" aria-label={t.ariaLabel}>
 
     <a href="#home" class="nav-logo" aria-label="Tironech — Inicio">
       <img src="/assets/logo/mark.png" alt="" width="56" height="60" loading="eager" decoding="sync" />
@@ -10,20 +15,21 @@
     </a>
 
     <ul class="nav-links" role="list">
-      <li><a href="#about"      class="nav-link">Empresa</a></li>
-      <li><a href="#entry"      class="nav-link">Soluciones</a></li>
-      <li><a href="#enterprise" class="nav-link">Enterprise</a></li>
-      <li><a href="#why-us"     class="nav-link">Por qué nosotros</a></li>
-      <li><a href="#leadership" class="nav-link">Equipo</a></li>
+      <li><a href="#about"      class="nav-link">{t.company}</a></li>
+      <li><a href="#entry"      class="nav-link">{t.solutions}</a></li>
+      <li><a href="#enterprise" class="nav-link">{t.enterprise}</a></li>
+      <li><a href="#why-us"     class="nav-link">{t.whyUs}</a></li>
+      <li><a href="#leadership" class="nav-link">{t.team}</a></li>
     </ul>
 
     <div class="nav-actions">
-      <a href="#contact" class="btn btn-cta btn-sm">Agendar sesión →</a>
+      <a href={ls.href} class="lang-btn" aria-label={ls.ariaLabel}>{ls.label}</a>
+      <a href="#contact" class="btn btn-cta btn-sm">{t.cta}</a>
       <button
         class="nav-burger"
         aria-expanded="false"
         aria-controls="mobile-menu"
-        aria-label="Abrir menú"
+        aria-label={t.burgerLabel}
       >
         <span></span><span></span><span></span>
       </button>
@@ -33,12 +39,13 @@
 
 <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
   <ul role="list">
-    <li><a href="#about"      class="mobile-link">Empresa</a></li>
-    <li><a href="#entry"      class="mobile-link">Soluciones de entrada</a></li>
-    <li><a href="#enterprise" class="mobile-link">Enterprise</a></li>
-    <li><a href="#why-us"     class="mobile-link">Por qué nosotros</a></li>
-    <li><a href="#leadership" class="mobile-link">Equipo</a></li>
-    <li><a href="#contact"    class="mobile-link mobile-cta">Agendar sesión →</a></li>
+    <li><a href="#about"      class="mobile-link">{t.company}</a></li>
+    <li><a href="#entry"      class="mobile-link">{t.mobileSolutions}</a></li>
+    <li><a href="#enterprise" class="mobile-link">{t.enterprise}</a></li>
+    <li><a href="#why-us"     class="mobile-link">{t.whyUs}</a></li>
+    <li><a href="#leadership" class="mobile-link">{t.team}</a></li>
+    <li><a href={ls.href}     class="mobile-link mobile-lang">{ls.label}</a></li>
+    <li><a href="#contact"    class="mobile-link mobile-cta">{t.cta}</a></li>
   </ul>
 </div>
 
@@ -84,6 +91,15 @@
 
   .nav-actions { display: flex; align-items: center; gap: 0.75rem; }
 
+  .lang-btn {
+    font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.12em; color: var(--ink-mute);
+    border: 1px solid var(--line-2); border-radius: 6px;
+    padding: 0.3rem 0.65rem;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  .lang-btn:hover { color: var(--ink); border-color: var(--copper-line); background: var(--copper-tint); }
+
   .nav-burger {
     display: flex; flex-direction: column; gap: 5px;
     padding: 8px; border-radius: 6px;
@@ -119,6 +135,7 @@
     min-height: 56px; display: flex; align-items: center;
   }
   .mobile-link:hover { color: var(--ink); }
+  .mobile-lang { color: var(--ink-mute); font-size: 1rem; letter-spacing: 0.08em; }
   .mobile-cta { color: var(--stone-light); border-bottom: none; margin-top: 1rem; }
 
   @media (min-width: 720px) {
