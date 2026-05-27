@@ -1,18 +1,23 @@
 ---
+import SEO from '../components/SEO.astro';
 import { ui } from '../i18n/ui';
 import type { Lang } from '../i18n/ui';
 
 interface Props {
-  title?: string;
-  description?: string;
+  title?:        string;
+  description?:  string;
+  canonicalURL?: string;
+  ogImage?:      string;
 }
 
 const lang = (Astro.currentLocale ?? 'en') as Lang;
 const t = ui[lang];
 
 const {
-  title = t.meta.title,
-  description = t.meta.description,
+  title        = t.meta.title,
+  description  = t.meta.description,
+  canonicalURL,
+  ogImage,
 } = Astro.props;
 ---
 
@@ -21,14 +26,17 @@ const {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content={description} />
   <meta name="theme-color" content="#1a1a1a" />
-  <title>{title}</title>
 
-  <!-- Open Graph -->
-  <meta property="og:title" content={t.meta.ogTitle} />
-  <meta property="og:description" content={t.meta.ogDescription} />
-  <meta property="og:type" content="website" />
+  <!-- Google Search Console -->
+  <meta name="google-site-verification" content="google6c8c64c6b98e19f4" />
+
+  <SEO
+    title={title}
+    description={description}
+    canonicalURL={canonicalURL}
+    ogImage={ogImage}
+  />
 
   <!-- Alternate language links -->
   <link rel="alternate" hreflang="en" href="https://tironech.com/" />
