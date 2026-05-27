@@ -6,7 +6,7 @@
 
 .why-grid {
   display: grid; gap: 1px;
-  background: var(--line); border-radius: 12px;
+  background: var(--line); border-radius: 12px; overflow: hidden;
   margin-top: 3rem;
 }
 

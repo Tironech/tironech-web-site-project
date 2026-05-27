@@ -4,7 +4,7 @@
   border-top: 1px solid var(--line);
   position: relative;
 }
-.contact-hero-bg { position: absolute; inset: 0; z-index: 0; }
+.contact-hero-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
 .contact-hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.05; filter: grayscale(1); }
 .contact-tint { position: absolute; inset: 0; background: var(--bg-2); }
 .contact > .container { position: relative; z-index: 1; }

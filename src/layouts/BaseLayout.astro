@@ -2,6 +2,7 @@
 import SEO from '../components/SEO.astro';
 import { ui } from '../i18n/ui';
 import type { Lang } from '../i18n/ui';
+import '../styles/global.css';
 
 interface Props {
   title?:        string;
@@ -69,8 +70,3 @@ const {
   <slot />
 </body>
 </html>
-
-<style is:global>
-  @import '../styles/variables.css';
-  @import '../styles/base.css';
-</style>
