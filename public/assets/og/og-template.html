@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<!--
+  TEMPLATE DE IMAGEN OG — TIRONECH
+  ─────────────────────────────────────────────────────────────────
+  USO:
+    1. Abrir este archivo en Chrome / Edge
+    2. Zoom del navegador al 100% (Ctrl+0 / Cmd+0)
+    3. Capturar la pantalla del área visible (exactamente 1200×630 px)
+       → Mac:  Cmd+Shift+4, seleccionar área
+       → Win:  Snipping Tool o Greenshot
+    4. Guardar como  og-default.jpg  en esta misma carpeta
+    5. Para páginas individuales, duplicar, cambiar el texto y guardar
+       con el nombre  og-[pagina].jpg
+
+  DIMENSIONES: 1200 × 630 px  (ratio 1.91:1 estándar para og:image)
+  ─────────────────────────────────────────────────────────────────
+-->
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1200" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      background-color: #1A1A1A;
+      font-family: 'Poppins', sans-serif;
+      color: #F5F3EE;
+      position: relative;
+    }
+
+    /* ── Fondo: gradiente sutil ── */
+    .bg-gradient {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 800px 500px at 80% 50%, rgba(153,94,49,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 600px 400px at 10% 80%, rgba(163,163,145,0.08) 0%, transparent 60%);
+    }
+
+    /* ── Borde superior copper ── */
+    .top-bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #995E31 0%, #C97D42 50%, #995E31 100%);
+    }
+
+    /* ── Grid de puntos decorativo ── */
+    .dot-grid {
+      position: absolute;
+      top: 0; right: 0;
+      width: 420px;
+      height: 100%;
+      background-image: radial-gradient(circle, rgba(153,94,49,0.25) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(to left, rgba(0,0,0,0.5) 0%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.5) 0%, transparent 100%);
+    }
+
+    /* ── Contenido principal ── */
+    .content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      padding: 52px 72px 48px;
+    }
+
+    /* ── Header: logo ── */
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-mark img {
+      width: 70px;
+      height: 75px;
+      object-fit: contain;
+    }
+
+    .logo-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: #F5F3EE;
+    }
+
+    .logo-sep {
+      width: 1px;
+      height: 28px;
+      background: rgba(245,243,238,0.2);
+      margin: 0 16px;
+    }
+
+    .logo-tagline {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: #A3A391;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── Cuerpo central ── */
+    .body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 24px 0 16px;
+      max-width: 720px;
+    }
+
+    .eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: #995E31;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .headline {
+      font-size: 58px;
+      font-weight: 800;
+      line-height: 1.1;
+      color: #F5F3EE;
+      margin-bottom: 22px;
+    }
+
+    .headline em {
+      font-style: normal;
+      color: #C97D42;
+    }
+
+    .subline {
+      font-family: 'Lato', sans-serif;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: rgba(245,243,238,0.7);
+      max-width: 600px;
+    }
+
+    /* ── Footer: URL + mercados ── */
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .site-url {
+      font-family: 'Lato', sans-serif;
+      font-size: 15px;
+      color: rgba(245,243,238,0.45);
+      letter-spacing: 0.04em;
+    }
+
+    .markets {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .market-tag {
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #A3A391;
+      border: 1px solid rgba(163,163,145,0.3);
+      padding: 5px 12px;
+      border-radius: 3px;
+    }
+
+    .market-tag.copper {
+      color: #995E31;
+      border-color: rgba(153,94,49,0.4);
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar"></div>
+  <div class="bg-gradient"></div>
+  <div class="dot-grid"></div>
+
+  <div class="content">
+
+    <!-- Header -->
+    <div class="logo-row">
+      <div class="logo-mark">
+        <img src="../logo/mark.png" alt="Tironech" />
+      </div>
+      <span class="logo-name">TIRONECH</span>
+      <div class="logo-sep"></div>
+      <span class="logo-tagline">Boutique de Ingeniería</span>
+    </div>
+
+    <!-- Cuerpo — EDITAR AQUÍ para páginas específicas -->
+    <div class="body">
+      <p class="eyebrow">QA · Inteligencia Artificial · Desarrollo</p>
+      <h1 class="headline">
+        Ingeniería de<br />
+        <em>alto valor.</em>
+      </h1>
+      <p class="subline">
+        QA avanzado con IA, Fractional CTO y desarrollo a medida
+        para startups y empresas en USA y Latam.
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-row">
+      <span class="site-url">tironech.com</span>
+      <div class="markets">
+        <span class="market-tag copper">USA</span>
+        <span class="market-tag">SaaS B2B</span>
+        <span class="market-tag">Fintech</span>
+        <span class="market-tag">Latam</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
