@@ -4,12 +4,13 @@ interface Props {
   description: string;
   canonicalURL?: string;
   ogImage?: string;
+  lang?: string;
 }
 
 const SITE_URL          = 'https://tironech.com';
 const SITE_NAME         = 'Tironech';
 const DEFAULT_DESCRIPTION =
-  'Tironech — Boutique de ingeniería de alto valor. QA avanzado con IA, desarrollo a medida y soluciones de Inteligencia Artificial para startups y empresas en USA y Latam.';
+  'Tironech — High-value engineering boutique. Advanced AI-powered QA, custom development and AI solutions for startups and companies in the US and Latin America.';
 const DEFAULT_OG_IMAGE  = '/assets/og/og-default.png';
 
 const {
@@ -17,7 +18,11 @@ const {
   description  = DEFAULT_DESCRIPTION,
   canonicalURL,
   ogImage      = DEFAULT_OG_IMAGE,
+  lang         = 'en',
 } = Astro.props;
+
+const ogLocale          = lang === 'es' ? 'es_ES' : 'en_US';
+const ogLocaleAlternate = lang === 'es' ? 'en_US' : 'es_ES';
 
 const canonical       = canonicalURL ?? new URL(Astro.url.pathname, SITE_URL).href;
 const ogImageAbsolute = ogImage.startsWith('http')
@@ -73,8 +78,9 @@ const schemaOrg = {
 <meta property="og:url"         content={canonical} />
 <meta property="og:image"       content={ogImageAbsolute} />
 <meta property="og:image:alt"   content={title} />
-<meta property="og:site_name"   content={SITE_NAME} />
-<meta property="og:locale"      content="es_ES" />
+<meta property="og:site_name"        content={SITE_NAME} />
+<meta property="og:locale"           content={ogLocale} />
+<meta property="og:locale:alternate" content={ogLocaleAlternate} />
 
 <!-- Twitter Card -->
 <meta name="twitter:card"        content="summary_large_image" />
