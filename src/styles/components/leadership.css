@@ -1,6 +1,6 @@
 .leadership {
   padding-block: var(--section-pad);
-  position: relative; overflow: hidden;
+  position: relative;
 }
 .leadership::before {
   content: ''; position: absolute; inset: 0; pointer-events: none;

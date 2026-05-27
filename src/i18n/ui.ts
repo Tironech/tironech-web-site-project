@@ -104,8 +104,6 @@ export const ui = {
     meta: {
       title: 'Tironech — High-value engineering. QA, AI & Dev.',
       description: 'Tironech — High-value engineering boutique. Advanced AI-powered QA, custom development and AI solutions for startups and companies in the US and Latin America.',
-      ogTitle: 'Tironech — High-value engineering',
-      ogDescription: 'Advanced AI-powered QA, Fractional CTO, Edge AI Vision and custom development for startups and companies in the US and Latin America.',
     },
   },
   es: {
@@ -213,8 +211,6 @@ export const ui = {
     meta: {
       title: 'Tironech — Ingeniería de alto valor. QA, AI & Dev.',
       description: 'Tironech — Boutique de ingeniería de alto valor. QA avanzado con IA, desarrollo a medida y soluciones de Inteligencia Artificial para startups y empresas en USA y Latam.',
-      ogTitle: 'Tironech — Ingeniería de alto valor',
-      ogDescription: 'QA avanzado con IA, Fractional CTO, Edge AI Vision y desarrollo a medida para startups y empresas en USA y Latam.',
     },
   },
 } as const;

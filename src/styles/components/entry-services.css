@@ -17,7 +17,7 @@
   border: 1px solid var(--line);
   border-radius: 16px; padding: 2rem;
   display: flex; flex-direction: column; gap: 0.9rem;
-  position: relative; overflow: hidden;
+  position: relative;
   transition: border-color 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), transform 0.3s var(--ease-out);
 }
 .entry-card::before {

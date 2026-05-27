@@ -4,7 +4,7 @@
   border-top: 1px solid var(--line);
   position: relative;
 }
-.contact-hero-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.contact-hero-bg { position: absolute; inset: 0; z-index: 0; }
 .contact-hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.05; filter: grayscale(1); }
 .contact-tint { position: absolute; inset: 0; background: var(--bg-2); }
 .contact > .container { position: relative; z-index: 1; }
@@ -70,22 +70,32 @@
 .contact-steps strong { display: block; font-size: 0.9rem; color: var(--ink); margin-bottom: 0.25rem; }
 .contact-steps p { font-size: 0.82rem; color: var(--ink-mute); line-height: 1.6; margin: 0; }
 
-.contact-direct {
-  background: var(--bg-card); border: 1px solid var(--copper-line);
-  border-radius: 14px; padding: 1.75rem;
-  display: flex; flex-direction: column; gap: 0.5rem; align-items: center;
+.form-feedback {
+  display: none;
+  padding: 0.85rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  line-height: 1.5;
   text-align: center;
 }
-.contact-direct-label {
-  font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.15em;
-  color: var(--ink-mute); text-transform: uppercase;
+.form-feedback--success {
+  display: block;
+  background: rgba(80, 160, 100, 0.12);
+  border: 1px solid rgba(80, 160, 100, 0.35);
+  color: #5fad74;
 }
-.contact-email {
-  font-family: var(--font-mono); font-size: 0.95rem; color: var(--copper-light);
-  border-bottom: 1px solid var(--copper-line); padding-bottom: 1px;
-  transition: color 0.2s, border-color 0.2s;
+.form-feedback--error {
+  display: block;
+  background: rgba(200, 70, 70, 0.1);
+  border: 1px solid rgba(200, 70, 70, 0.3);
+  color: #e07070;
 }
-.contact-email:hover { color: var(--copper-hover); border-color: var(--copper-hover); }
+
+#contact-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  pointer-events: none;
+}
 
 @media (max-width: 539px) {
   .contact-form    { padding: 1.75rem 1.25rem; }

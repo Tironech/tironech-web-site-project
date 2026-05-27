@@ -1,12 +1,12 @@
 ---
 import { ui } from '../i18n/ui';
 import type { Lang } from '../i18n/ui';
-import contentEn from '../data/content.en.json';
-import contentEs from '../data/content.es.json';
+import { getContent } from '../i18n/content';
+import '../styles/components/why-us.css';
 
 const lang = (Astro.currentLocale ?? 'en') as Lang;
 const t = ui[lang].whyUs;
-const { whyItems } = lang === 'es' ? contentEs : contentEn;
+const { whyItems } = getContent(lang);
 ---
 <section class="why-us section section-2" id="why-us" aria-labelledby="why-title">
   <div class="container">
@@ -28,46 +28,3 @@ const { whyItems } = lang === 'es' ? contentEs : contentEn;
     </div>
   </div>
 </section>
-
-<style>
-  .why-us {
-    padding-block: var(--section-pad);
-    background: var(--bg-2);
-    border-bottom: 1px solid var(--line);
-  }
-
-  .why-grid {
-    display: grid; gap: 1px;
-    background: var(--line); border-radius: 12px; overflow: hidden;
-    margin-top: 3rem;
-  }
-
-  .why-item {
-    display: flex; align-items: flex-start; gap: 1.25rem;
-    background: var(--bg-card); padding: 1.75rem 2rem;
-    transition: background 0.25s;
-  }
-  .why-item:hover { background: var(--bg-card-2); }
-
-  .why-icon {
-    width: 38px; height: 38px; flex-shrink: 0; border-radius: 8px;
-    background: rgba(153,94,49,0.18); border: 1px solid rgba(153,94,49,0.3);
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--font-mono); font-weight: 700;
-    font-size: 0.9rem; color: var(--copper-light);
-  }
-  .why-icon.amber {
-    background: rgba(163,163,145,0.15);
-    border-color: rgba(163,163,145,0.3);
-    color: var(--stone-light);
-  }
-
-  .why-content h3 {
-    font-family: var(--font-display); font-size: 1rem; font-weight: 700;
-    color: var(--ink); margin-bottom: 0.4rem; letter-spacing: -0.01em;
-  }
-  .why-content p { font-size: 0.88rem; color: var(--ink-mute); line-height: 1.65; }
-
-  @media (min-width: 720px)  { .why-grid { grid-template-columns: 1fr 1fr; } }
-  @media (min-width: 1024px) { .why-grid { grid-template-columns: repeat(3, 1fr); } }
-</style>
