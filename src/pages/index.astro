@@ -11,8 +11,11 @@ import WhyUs from '../components/WhyUs.astro';
 import Leadership from '../components/Leadership.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
+
+const title = 'Tironech — Ingeniería de alto valor. QA, AI & Dev.';
+const description = 'Boutique de ingeniería para startups y empresas. QA avanzado con IA, Fractional CTO, Edge AI Vision y desarrollo a medida para USA y Latam. Resultados desde la primera semana.';
 ---
-<BaseLayout>
+<BaseLayout title={title} description={description}>
   <Cursor />
   <Nav />
   <main id="main-content">

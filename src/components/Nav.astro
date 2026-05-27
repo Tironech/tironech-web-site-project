@@ -1,11 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import '../styles/components/nav.css';
 ---
 <header class="site-nav" role="banner">
   <nav class="nav-inner container" aria-label="Navegación principal">
 
     <a href="#home" class="nav-logo" aria-label="Tironech — Inicio">
-      <img src="/assets/logo/mark.png" alt="" width="70" height="75" loading="eager" decoding="sync" />
+      <Image src="/assets/logo/mark.png" alt="Tironech logo" width={70} height={75} loading="eager" decoding="sync" />
       <span class="logo-full">TIRONECH</span>
     </a>
 
