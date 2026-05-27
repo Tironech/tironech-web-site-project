@@ -9,6 +9,7 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -24,6 +25,7 @@ body {
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
   overscroll-behavior-y: none;
 }
 img, svg, video { display: block; max-width: 100%; }
@@ -127,6 +129,32 @@ ul[role="list"] { list-style: none; padding: 0; }
 .btn-card  { margin-top: auto; }
 .btn-arrow { display: inline-block; transition: transform 0.2s var(--ease-out); }
 .btn:hover .btn-arrow { transform: translateX(4px); }
+
+/* Custom cursor — desktop only */
+@media (hover: hover) and (pointer: fine) {
+  .cursor {
+    position: fixed; inset: 0; pointer-events: none;
+    z-index: 9998; opacity: 0; transition: opacity 0.3s var(--ease-out);
+  }
+  .cursor-dot {
+    position: fixed; top: 0; left: 0;
+    width: 6px; height: 6px;
+    background: var(--stone-light);
+    border-radius: 50%;
+    transform: translate(-50%,-50%);
+    transition: transform 0.1s, opacity 0.2s;
+  }
+  .cursor-ring {
+    position: fixed; top: 0; left: 0;
+    width: 30px; height: 30px;
+    border: 1.5px solid rgba(163,163,145,0.55);
+    border-radius: 50%;
+    transform: translate(-50%,-50%);
+    transition: transform 0.05s linear;
+  }
+  .cursor.is-ready { opacity: 1; }
+  body, a, button { cursor: none; }
+}
 
 /* Scroll reveal */
 .reveal {
