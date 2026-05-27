@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 
-const RECIPIENTS = ['raul.gomez@tironech.com', 'amalfi.gomez@tironech.com'];
+const RECIPIENTS = ['raul.gomez@tironech.com', 'amalfi.aya@tironech.com'];
 
 const SERVICE_LABELS = {
   'qa':             'QA Consulting & Automation',
