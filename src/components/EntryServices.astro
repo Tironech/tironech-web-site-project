@@ -38,7 +38,10 @@ const { entryServices } = getContent(lang);
             <span class="price-val">{s.priceVal}</span>
             <span class="price-model">{s.priceModel}</span>
           </div>
-          <a href="#contact" class:list={['btn btn-card', s.ctaVariant]}>{s.ctaLabel} <span class="btn-arrow" aria-hidden="true">→</span></a>
+          <a href="#contact" class:list={['btn btn-card', s.ctaVariant, { 'btn-full': s.ctaFull }]}>
+            {s.ctaLabel}
+            {!s.ctaFull && <span class="btn-arrow" aria-hidden="true">→</span>}
+          </a>
         </article>
       ))}
     </div>

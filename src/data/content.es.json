@@ -7,21 +7,24 @@
       "icon": "◈",
       "iconVariant": "",
       "featured": false,
-      "title": "QA Consulting & Automation",
+      "title": "QA Consulting",
       "target": "SaaS B2B, Fintech y Startups con bugs en producción",
       "pain": "¿Sus QA manuales no escalan con la velocidad de sus releases? ¿Los bugs llegan a producción antes de poder detectarlos?",
       "desc": "Auditamos su proceso de calidad, diseñamos el framework de automatización y eliminamos los bugs antes de que lleguen a sus usuarios.",
       "features": [
         "Auditoría de QA y plan de acción en 5 días",
-        "Automatización con Playwright / Cypress / Selenium",
+        "Automatización con diferentes métodos adaptado a la arquitectura y necesidades de tu producto",
         "Integración CI/CD para calidad continua",
-        "Reportes de cobertura y KPIs de calidad"
+        "Reportes de cobertura y KPIs de calidad",
+        "Estrategias a la Medida: Diseñamos un plan de Quality Assurance (QA) totalmente adaptado a la arquitectura y necesidades de tu producto",
+        "Estándares de Excelencia: Definimos metodologías de prueba rigurosas, implementadas y guiadas directamente por líderes técnicos expertos"
       ],
       "priceFrom": "Desde",
-      "priceVal": "$1.800 USD/mes",
-      "priceModel": "Proyecto + Retainer",
-      "ctaLabel": "Agendar sesión de QA →",
-      "ctaVariant": "btn-cta"
+      "priceVal": "$1.000 USD",
+      "priceModel": "",
+      "ctaLabel": "Solicitar Cotización",
+      "ctaVariant": "btn-cta",
+      "ctaFull": true
     },
     {
       "id": "ai-quality",
@@ -30,21 +33,22 @@
       "icon": "⊕",
       "iconVariant": "card-icon--amber",
       "featured": true,
-      "title": "AI Quality Shield",
+      "title": "Automation",
       "target": "Empresas con UI compleja y releases frecuentes",
       "pain": "Cada release es un riesgo. Cada bug visible para el cliente cuesta dinero, tiempo y reputación.",
       "desc": "QA potenciado con inteligencia artificial: pruebas visuales automatizadas, detección de regresiones y cobertura inteligente de los casos más críticos de su producto.",
       "features": [
-        "Visual AI testing y detección de regresiones",
-        "Cobertura inteligente de user journeys críticos",
-        "Análisis de impacto pre-release automático",
-        "Dashboard de salud de producto en tiempo real"
+        "Aceleración de Entregas: Maximizamos tu time-to-market garantizando despliegues más rápidos sin sacrificar la calidad del producto",
+        "Integración Continua (CI/CD): Diseñamos e implementamos arquitecturas de automatización de pruebas integradas directamente en tus pipelines",
+        "Eficiencia Operativa: Reducimos drásticamente el trabajo manual repetitivo, permitiendo que tu equipo se enfoque 100% en innovar",
+        "Validación Rigurosa: Aseguramos que cada nueva línea de código sea evaluada de forma automática, rápida y precisa antes de llegar a producción"
       ],
-      "priceFrom": "Proyecto desde",
-      "priceVal": "$4.500 USD",
-      "priceModel": "+ Retainer $3.500/mes",
-      "ctaLabel": "Solicitar demo de AI Shield →",
-      "ctaVariant": "btn-amber"
+      "priceFrom": "Desde",
+      "priceVal": "$2.000 USD",
+      "priceModel": "",
+      "ctaLabel": "Solicitar Cotización",
+      "ctaVariant": "btn-amber",
+      "ctaFull": true
     },
     {
       "id": "web-apps",
@@ -58,16 +62,18 @@
       "pain": "Su presencia digital no representa el nivel de su empresa. Necesita una plataforma que convierta, escale y no se caiga.",
       "desc": "Diseñamos y desarrollamos sitios web y aplicaciones móviles con arquitectura limpia, optimizadas para rendimiento y conversión desde el primer día.",
       "features": [
-        "Diseño UX/UI estratégico orientado a conversión",
         "Desarrollo frontend y backend con código limpio",
         "Apps nativas e híbridas iOS y Android",
-        "Despliegue, CI/CD y soporte post-lanzamiento"
+        "Productos Digitales Escalables: Convertimos tus ideas en soluciones de alto rendimiento, preparadas para crecer al ritmo de tu empresa",
+        "Desarrollo Multiplataforma: Creamos desde plataformas web complejas hasta aplicaciones móviles nativas e híbridas a la medida",
+        "Calidad Técnica y UX: Construimos software basado en código limpio, arquitectura robusta y una experiencia de usuario impecable"
       ],
       "priceFrom": "Desde",
-      "priceVal": "$3.000 USD",
-      "priceModel": "Proyecto cerrado",
-      "ctaLabel": "Cotizar mi proyecto →",
-      "ctaVariant": "btn-cta"
+      "priceVal": "$2.500 USD",
+      "priceModel": "",
+      "ctaLabel": "Solicitar Cotización",
+      "ctaVariant": "btn-cta",
+      "ctaFull": true
     }
   ],
   "enterpriseServices": [
@@ -78,21 +84,26 @@
       "icon": "⬡",
       "iconVariant": "",
       "featured": false,
-      "title": "Fractional CTO + Dev Team",
-      "target": "Startups en USA sin equipo técnico senior",
+      "title": "Integración CTO + Dev Team + Web & Apps",
+      "target": "Startups sin equipo técnico senior",
       "value": "El CTO senior que necesita, sin el costo ni el riesgo de contratarlo full-time.",
       "desc": "Liderazgo técnico estratégico más equipo de desarrollo llave en mano. Definimos arquitectura, establecemos estándares, entregamos código y escalamos su producto junto a usted.",
       "features": [
+        "Liderazgo Estratégico (CTO): Aportamos la visión técnica de un Chief Technology Officer para diseñar la arquitectura y alinear la tecnología con tus objetivos de negocio",
+        "Desarrollo End-to-End: Ejecutamos la creación de tus plataformas web y aplicaciones móviles con un escuadrón experto en código limpio y escalable",
+        "Calidad y Automatización (QA): Protegemos tu producto integrando metodologías de prueba rigurosas y automatización en tus pipelines de CI/CD",
+        "Solución All-in-One: Escala tu empresa con la capacidad operativa de un departamento de tecnología completo, a una fracción del costo tradicional",
         "Arquitectura de producto y roadmap técnico completo",
         "Selección y liderazgo del equipo de desarrollo",
         "Definición de stack tecnológico y estándares de código",
         "PR reviews, quality gates y gestión de deuda técnica",
         "Comunicación directa con founders e inversores"
       ],
-      "priceVal": "$5.000 – $12.000 USD/mes",
-      "priceModel": "Retainer mensual",
-      "ctaLabel": "Hablar de mi equipo técnico",
-      "ctaVariant": "btn-cta"
+      "priceVal": "$4.500 USD",
+      "priceModel": "Proyecto",
+      "ctaLabel": "Contactar el Equipo Técnico",
+      "ctaVariant": "btn-cta",
+      "ctaArrow": false
     },
     {
       "id": "edge-ai",
@@ -101,21 +112,24 @@
       "icon": "⬘",
       "iconVariant": "ent-icon--amber",
       "featured": true,
-      "title": "Edge AI Vision Sprint",
+      "title": "Performance & Social Media Management",
       "target": "Industria, manufactura y logística",
-      "value": "Visión artificial e IA en producción en semanas, no en meses.",
-      "desc": "Implementamos soluciones de Computer Vision y Edge AI directamente en su línea de producción, logística o control de calidad industrial, con resultados medibles desde el primer sprint.",
+      "value": "Visión artificial e IA en producción en semanas, no en meses. Social Media Producción en Semanas, No en Meses.",
+      "desc": "Construimos y gestionamos la presencia digital de tu marca para generar autoridad y conectar con tu audiencia ideal. No solo publicamos contenido; diseñamos estrategias basadas en datos para posicionar tu empresa en el mercado competitivo, optimizando cada canal para maximizar el impacto y el retorno de inversión.",
       "features": [
-        "Diagnóstico y diseño de solución Edge AI en 1 semana",
-        "Desarrollo e integración de Computer Vision",
-        "Despliegue en hardware edge (Nvidia Jetson, etc.)",
-        "Dashboard de monitoreo y alertas en tiempo real",
-        "Licencia de uso + soporte técnico mensual incluido"
+        "Estrategia Basada en Datos: Analizamos tu mercado y competencia para diseñar un plan de contenidos que realmente resuene con tus clientes potenciales",
+        "Gestión Integral de Canales: Operamos tus redes sociales de principio a fin, asegurando una voz de marca consistente, profesional y activa",
+        "Posicionamiento de Autoridad (B2B): Creamos contenido de valor que proyecta el liderazgo y la experiencia de tu empresa dentro de tu sector",
+        "Métricas y Rendimiento: Medimos el impacto de cada campaña con reportes analíticos claros, ajustando la estrategia para garantizar un crecimiento continuo",
+        "Creación Visual (Diseño Gráfico/Video)",
+        "Licencia de uso + soporte técnico mensual incluido",
+        "Monitoreo y alertas en tiempo real"
       ],
-      "priceVal": "$8.000 – $25.000 USD",
+      "priceVal": "$200 USD/día",
       "priceModel": "Proyecto + Licencia $2.000/mes",
       "ctaLabel": "Explorar Edge AI para mi industria",
-      "ctaVariant": "btn-amber"
+      "ctaVariant": "btn-amber",
+      "ctaArrow": false
     }
   ],
   "whyItems": [
@@ -211,11 +225,11 @@
   ],
   "markets": ["SaaS B2B", "Fintech", "Startups USA", "Latam Corporativo"],
   "footerSolutions": [
-    { "href": "#qa-automation", "label": "QA Consulting & Automation" },
-    { "href": "#ai-quality",    "label": "AI Quality Shield" },
+    { "href": "#qa-automation", "label": "QA Consulting" },
+    { "href": "#ai-quality",    "label": "Automation" },
     { "href": "#web-apps",      "label": "Desarrollo Web & Apps" },
-    { "href": "#fractional-cto","label": "Fractional CTO + Dev Team" },
-    { "href": "#edge-ai",       "label": "Edge AI Vision Sprint" }
+    { "href": "#fractional-cto","label": "Integración CTO + Dev Team + Web & Apps" },
+    { "href": "#edge-ai",       "label": "Performance & Social Media Management" }
   ],
   "footerCompany": [
     { "href": "#about",      "label": "Sobre nosotros" },
