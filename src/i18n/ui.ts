@@ -12,7 +12,7 @@ export const ui = {
       mobileSolutions: 'Entry solutions',
     },
     hero: {
-      kicker: 'ENGINEERING BOUTIQUE · B2B · USA & LATAM',
+      kicker: 'TECH HUB & SOFTWARE · B2B · USA & LATAM',
       h1Line1: 'Bugs in production.',
       h1Line2: 'No senior team.',
       h1Line3: "Technology that doesn't scale.",
@@ -35,7 +35,7 @@ export const ui = {
     },
     whyUs: {
       eyebrow: 'WHY CHOOSE TIRONECH',
-      h2: 'What sets an engineering boutique<br />apart from <em>a generic agency</em>.',
+      h2: 'What sets apart simply delivering a project<br />from <em>solving business problems with technology</em>.',
     },
     entryServices: {
       eyebrow: 'ENTRY SOLUTIONS',
@@ -47,7 +47,7 @@ export const ui = {
     enterprise: {
       eyebrow: 'ENTERPRISE SOLUTIONS · HIGH-TICKET',
       h2: 'For companies that require<br /><em>senior technical leadership</em>.',
-      sub: 'High-impact services for US startups that need a CTO and for industries that want to bring AI to the production floor.',
+      sub: 'High-impact services for startups that need a CTO and for industries that want to bring AI to the production floor.',
       includesAriaLabel: 'Includes',
     },
     leadership: {
@@ -119,7 +119,7 @@ export const ui = {
       mobileSolutions: 'Soluciones de entrada',
     },
     hero: {
-      kicker: 'BOUTIQUE DE INGENIERÍA · B2B · USA & LATAM',
+      kicker: 'TECH HUB & SOFTWARE · B2B · USA & LATAM',
       h1Line1: 'Bugs en producción.',
       h1Line2: 'Sin equipo senior.',
       h1Line3: 'Tecnología que no escala.',
@@ -142,7 +142,7 @@ export const ui = {
     },
     whyUs: {
       eyebrow: 'POR QUÉ ELEGIR TIRONECH',
-      h2: 'Lo que diferencia a una boutique<br />de ingeniería de <em>una agencia genérica</em>.',
+      h2: 'Lo que diferencia entre simplemente entregar un proyecto<br />y <em>resolver problemas de negocio con tecnología</em>.',
     },
     entryServices: {
       eyebrow: 'SOLUCIONES DE ENTRADA',
@@ -154,7 +154,7 @@ export const ui = {
     enterprise: {
       eyebrow: 'SOLUCIONES ENTERPRISE · HIGH-TICKET',
       h2: 'Para empresas que requieren<br /><em>liderazgo técnico senior</em>.',
-      sub: 'Servicios de alto impacto para startups en USA que necesitan un CTO y para industrias que quieren llevar la IA al piso de producción.',
+      sub: 'Servicios de alto impacto para startups que necesitan un CTO y para industrias que quieren llevar la IA al piso de producción.',
       includesAriaLabel: 'Incluye',
     },
     leadership: {
@@ -181,7 +181,7 @@ export const ui = {
       serviceDefault: 'Seleccione una solución',
       problemLbl: 'Describa su problema técnico actual *',
       problemPh: 'Ej. Tenemos bugs frecuentes en producción, nuestro QA manual no escala y los releases toman demasiado tiempo…',
-      submitBtn: 'Agendar sesión de descubrimiento gratuita',
+      submitBtn: 'Agendar Sesión de Descubrimiento Gratuita',
       disclaimer: 'Respondemos en menos de 24 horas hábiles. Sin ventas agresivas — solo una conversación técnica honesta. Al enviar acepta nuestra <a href="/es/privacy" class="disclaimer-link">Política de Privacidad</a>.',
       promiseTitle: '¿Qué ocurre después de enviar el formulario?',
       directLabel: 'Contacto directo:',

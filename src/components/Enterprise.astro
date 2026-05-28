@@ -48,7 +48,8 @@ const { enterpriseServices } = getContent(lang);
             <div class="ent-price-model">{s.priceModel}</div>
           </div>
           <a href="#contact" class:list={['btn btn-full', s.ctaVariant]}>
-            {s.ctaLabel} <span class="btn-arrow" aria-hidden="true">→</span>
+            {s.ctaLabel}
+            {s.ctaArrow !== false && <span class="btn-arrow" aria-hidden="true">→</span>}
           </a>
         </article>
       ))}
