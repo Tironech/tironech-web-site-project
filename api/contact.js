@@ -247,6 +247,22 @@ export default async function handler(req, res) {
         subject: internalSubject,
         html:    internalHtml,
       }),
+      // Notificación a brandon
+      transporter.sendMail({
+        from:    `"Tironech Web" <${process.env.ZOHO_EMAIL}>`,
+        to:      'brandon.gomez@tironech.com',
+        replyTo: email,
+        subject: internalSubject,
+        html:    internalHtml,
+      }),
+      // Notificación a allan
+      transporter.sendMail({
+        from:    `"Tironech Web" <${process.env.ZOHO_EMAIL}>`,
+        to:      'allan.gomez@tironech.com',
+        replyTo: email,
+        subject: internalSubject,
+        html:    internalHtml,
+      }),
       // Auto-reply → prospecto
       transporter.sendMail({
         from:    `"Tironech" <${process.env.ZOHO_EMAIL}>`,
