@@ -1,0 +1,37 @@
+---
+import { ui } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+import { getContent } from '../i18n/content';
+import '../styles/components/leadership.css';
+
+const lang = (Astro.currentLocale ?? 'en') as Lang;
+const t = ui[lang].leadership;
+const { teamMembers } = getContent(lang);
+---
+<section class="leadership section section-1" id="leadership" aria-labelledby="leadership-title">
+  <div class="container">
+    <p class="section-eyebrow text-center reveal">{t.eyebrow}</p>
+    <h2 class="section-title text-center reveal" id="leadership-title" set:html={t.h2} />
+    <p class="leadership-intro text-center reveal">{t.intro}</p>
+
+    <div class="team-grid">
+      {teamMembers.map((m) => (
+        <div class="team-card reveal" aria-label={t.profileAriaLabel}>
+          <div class:list={['team-avatar', { amber: m.avatarVariant === 'team-avatar--amber' }]} aria-hidden="true">
+            <span>{m.initials}</span>
+          </div>
+          <div>
+            <p class="team-role">{m.role}</p>
+            <p class="team-area">{m.area}</p>
+            <p class="team-focus">{m.focus}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="coming-soon-note reveal">
+      <span class="coming-badge">{t.comingSoon}</span>
+      {t.comingDesc}
+    </p>
+  </div>
+</section>

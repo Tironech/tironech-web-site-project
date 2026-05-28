@@ -1,0 +1,18 @@
+---
+import { ui } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+import { getContent } from '../i18n/content';
+import '../styles/components/trust-strip.css';
+
+const lang = (Astro.currentLocale ?? 'en') as Lang;
+const t = ui[lang].trustStrip;
+const { markets } = getContent(lang);
+---
+<div class="trust-strip" aria-label={t.ariaLabel}>
+  {markets.map((m, i) => (
+    <>
+      <span>{m}</span>
+      {i < markets.length - 1 && <span class="trust-sep" aria-hidden="true">·</span>}
+    </>
+  ))}
+</div>

@@ -1,0 +1,30 @@
+---
+import { ui } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+import { getContent } from '../i18n/content';
+import '../styles/components/why-us.css';
+
+const lang = (Astro.currentLocale ?? 'en') as Lang;
+const t = ui[lang].whyUs;
+const { whyItems } = getContent(lang);
+---
+<section class="why-us section section-2" id="why-us" aria-labelledby="why-title">
+  <div class="container">
+    <p class="section-eyebrow text-center reveal">{t.eyebrow}</p>
+    <h2 class="section-title text-center reveal" id="why-title" set:html={t.h2} />
+
+    <div class="why-grid">
+      {whyItems.map((item) => (
+        <div class="why-item reveal">
+          <div class:list={['why-icon', { amber: item.iconVariant === 'why-icon--amber' }]} aria-hidden="true">
+            {item.icon}
+          </div>
+          <div class="why-content">
+            <h3>{item.title}</h3>
+            <p>{item.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

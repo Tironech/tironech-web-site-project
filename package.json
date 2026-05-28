@@ -1,0 +1,20 @@
+{
+  "name": "tironech-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "@vercel/analytics": "^2.0.1",
+    "astro": "^5.7.0",
+    "nodemailer": "^8.0.9"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
+  }
+}

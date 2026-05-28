@@ -1,0 +1,67 @@
+---
+import { Image } from 'astro:assets';
+import heroImg from '../assets/img/hero.jpg';
+import { ui } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+import { getContent } from '../i18n/content';
+import '../styles/components/hero.css';
+
+const lang = (Astro.currentLocale ?? 'en') as Lang;
+const t = ui[lang].hero;
+const { markets } = getContent(lang);
+---
+<section class="hero" id="home" aria-labelledby="hero-title">
+  <div class="hero-gradient" data-mouse-gradient aria-hidden="true"></div>
+  <div class="hero-noise" aria-hidden="true"></div>
+  <div class="hero-img-wrap" aria-hidden="true">
+    <Image
+      src={heroImg}
+      alt="Espacio de trabajo de ingeniería con interfaces de código e inteligencia artificial"
+      class="hero-bg-img"
+      format="webp"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="hero-img-tint"></div>
+  </div>
+
+  <div class="container hero-inner">
+    <p class="hero-kicker">
+      <span class="kicker-dot" aria-hidden="true"></span>
+      <span>{t.kicker}</span>
+    </p>
+
+    <h1 class="hero-title" id="hero-title">
+      {t.h1Line1}<br />
+      {t.h1Line2}<br />
+      {t.h1Line3}<br />
+      <em>{t.h1Em}</em>
+    </h1>
+
+    <p class="hero-sub">{t.sub}</p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-cta">
+        {t.ctaPrimary} <span class="btn-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="#entry" class="btn btn-ghost">
+        {t.ctaSecondary} <span class="btn-arrow" aria-hidden="true">↓</span>
+      </a>
+    </div>
+
+    <div class="hero-markets" aria-label={t.marketsAriaLabel}>
+      <span class="market-label">{t.marketsLabel}</span>
+      {markets.map((m, i) => (
+        <>
+          <span>{m}</span>
+          {i < markets.length - 1 && <span class="sep" aria-hidden="true">·</span>}
+        </>
+      ))}
+    </div>
+  </div>
+
+  <div class="hero-scroll-cue" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span class="scroll-label">scroll</span>
+  </div>
+</section>

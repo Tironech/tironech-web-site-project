@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /.astro/
+
+Sitemap: https://tironech.com/sitemap-index.xml

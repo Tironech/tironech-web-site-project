@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git rm *)",
+      "Bash(git commit -m 'Add .vercel/, .DS_Store and .env.local to .gitignore; remove cached .DS_Store files *)",
+      "Bash(git commit -m 'Fix enterprise card animation delay: set to 0ms, fix data-delay falsy bug *)",
+      "Bash(git commit -m ' *)"
+    ]
+  }
+}

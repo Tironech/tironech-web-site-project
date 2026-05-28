@@ -1,0 +1,46 @@
+---
+import { ui } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+import { getContent } from '../i18n/content';
+import '../styles/components/entry-services.css';
+
+const lang = (Astro.currentLocale ?? 'en') as Lang;
+const t = ui[lang].entryServices;
+const { entryServices } = getContent(lang);
+---
+<section class="entry-services section section-2" id="entry" aria-labelledby="entry-title">
+  <div class="entry-accent" aria-hidden="true"></div>
+  <div class="container">
+    <p class="section-eyebrow text-center reveal">{t.eyebrow}</p>
+    <h2 class="section-title text-center reveal" id="entry-title" set:html={t.h2} />
+    <p class="section-sub text-center reveal">{t.sub}</p>
+
+    <div class="entry-grid">
+      {entryServices.map((s) => (
+        <article
+          class:list={['entry-card reveal', { featured: s.featured }]}
+          id={s.id}
+          aria-labelledby={`${s.id}-title`}
+        >
+          <div class:list={['card-tag', { amber: s.featured }]}>{s.tag}</div>
+          <div class:list={['card-icon', { amber: s.featured }]} aria-hidden="true">{s.icon}</div>
+          <h3 class="card-title" id={`${s.id}-title`}
+            set:html={s.title.replace('&', '&amp;')}
+          />
+          <p class="card-target">{t.forLabel} <strong>{s.target}</strong></p>
+          <p class="card-pain">{s.pain}</p>
+          <p class="card-desc">{s.desc}</p>
+          <ul class="card-features" aria-label={t.featuresAriaLabel}>
+            {s.features.map((f) => <li>{f}</li>)}
+          </ul>
+          <div class="card-price">
+            <span class="price-from">{s.priceFrom}</span>
+            <span class="price-val">{s.priceVal}</span>
+            <span class="price-model">{s.priceModel}</span>
+          </div>
+          <a href="#contact" class:list={['btn btn-card', s.ctaVariant]}>{s.ctaLabel} <span class="btn-arrow" aria-hidden="true">→</span></a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,87 @@
+---
+import SEO from '../components/SEO.astro';
+import { getImage } from 'astro:assets';
+import heroSrc from '../assets/img/hero.jpg';
+import { ui } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+import '../styles/global.css';
+import Analytics from '@vercel/analytics/astro';
+
+const heroPreload = await getImage({ src: heroSrc, format: 'webp' });
+
+interface Props {
+  title?:        string;
+  description?:  string;
+  canonicalURL?: string;
+  ogImage?:      string;
+}
+
+const lang = (Astro.currentLocale ?? 'en') as Lang;
+const t = ui[lang];
+
+const {
+  title        = t.meta.title,
+  description  = t.meta.description,
+  canonicalURL,
+  ogImage,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1a1a1a" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- Google Search Console -->
+  <meta name="google-site-verification" content="google6c8c64c6b98e19f4" />
+
+  <SEO
+    title={title}
+    description={description}
+    canonicalURL={canonicalURL}
+    ogImage={ogImage}
+    lang={lang}
+  />
+
+  <!-- Alternate language links -->
+  <link rel="alternate" hreflang="en" href="https://tironech.com/" />
+  <link rel="alternate" hreflang="es" href="https://tironech.com/es/" />
+  <link rel="alternate" hreflang="x-default" href="https://tironech.com/" />
+
+  <!-- Preload hero -->
+  <link rel="preload" as="image" href={heroPreload.src} fetchpriority="high" type="image/webp" />
+
+  <!-- Fonts — non-blocking load -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="preload"
+    as="style"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Lato:wght@300;400;700;900&family=JetBrains+Mono:wght@400;500&display=swap"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Lato:wght@300;400;700;900&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+  </noscript>
+
+  <!-- GSAP (lib estática desde public/) -->
+  <script is:inline defer src="/lib/gsap.min.js"></script>
+  <script is:inline defer src="/lib/ScrollTrigger.min.js"></script>
+  <script is:inline defer src="/scripts/main.js"></script>
+</head>
+<body>
+  <slot />
+  <Analytics />
+</body>
+</html>

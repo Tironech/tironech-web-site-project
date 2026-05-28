@@ -1,0 +1,168 @@
+---
+import { Image } from 'astro:assets';
+import aiSectionImg from '../assets/img/ai-section.jpg';
+import { ui } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+import { getContent } from '../i18n/content';
+import '../styles/components/contact.css';
+
+const lang = (Astro.currentLocale ?? 'en') as Lang;
+const t = ui[lang].contact;
+const { contactSteps } = getContent(lang);
+---
+<section class="contact section section-2" id="contact" aria-labelledby="contact-title">
+  <div class="contact-hero-bg" aria-hidden="true">
+    <Image src={aiSectionImg} alt="Panel de automatización y testing de calidad con inteligencia artificial" format="webp" loading="lazy" />
+    <div class="contact-tint"></div>
+  </div>
+  <div class="container">
+    <p class="section-eyebrow text-center reveal">{t.eyebrow}</p>
+    <h2 class="section-title text-center reveal" id="contact-title" set:html={t.h2} />
+    <p class="section-sub text-center reveal">{t.sub}</p>
+
+    <div class="contact-wrap">
+      <form class="contact-form reveal" id="contact-form" name="tironech-contact" novalidate>
+        <input type="hidden" name="lang" value={lang} />
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label" for="ct-name">{t.nameLbl}</label>
+            <input class="form-input" id="ct-name" type="text" name="name"
+              placeholder={t.namePh} required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="ct-company">{t.companyLbl}</label>
+            <input class="form-input" id="ct-company" type="text" name="company"
+              placeholder={t.companyPh} required autocomplete="organization" />
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label" for="ct-email">{t.emailLbl}</label>
+            <input class="form-input" id="ct-email" type="email" name="email"
+              placeholder={t.emailPh} required autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="ct-market">{t.marketLbl}</label>
+            <input class="form-input" id="ct-market" type="text" name="market"
+              placeholder={t.marketPh} autocomplete="country" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="ct-service">{t.serviceLbl}</label>
+          <select class="form-input form-select" id="ct-service" name="service" required>
+            <option value="" disabled selected>{t.serviceDefault}</option>
+            {t.serviceOptions.map((opt) => (
+              <option value={opt.value}>{opt.label}</option>
+            ))}
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="ct-problem">{t.problemLbl}</label>
+          <textarea class="form-input form-textarea" id="ct-problem" name="problem"
+            placeholder={t.problemPh}
+            rows="4" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-cta btn-full btn-lg" id="contact-submit">
+          <span class="btn-label">{t.submitBtn}</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </button>
+
+        <p class="form-disclaimer" set:html={t.disclaimer} />
+        <div id="form-feedback" class="form-feedback" role="alert" aria-live="polite"></div>
+      </form>
+
+      <div class="contact-side reveal">
+        <div class="contact-promise">
+          <h3>{t.promiseTitle}</h3>
+          <ol class="contact-steps">
+            {contactSteps.map((step) => (
+              <li>
+                <span class="step-num">{step.num}</span>
+                <div>
+                  <strong>{step.title}</strong>
+                  <p>{step.desc}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form     = document.getElementById('contact-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('contact-submit') as HTMLButtonElement | null;
+  const feedback  = document.getElementById('form-feedback') as HTMLElement | null;
+
+  if (form && submitBtn && feedback) {
+    const lang = document.documentElement.lang || 'en';
+
+    const msg: Record<string, { success: string; error: string; sending: string }> = {
+      en: {
+        success: '✓ Message sent! We\'ll reply within 24 business hours.',
+        error:   'Something went wrong. Please try again or email us directly.',
+        sending: 'Sending…',
+      },
+      es: {
+        success: '✓ ¡Mensaje enviado! Respondemos en menos de 24 horas hábiles.',
+        error:   'Algo salió mal. Por favor intente de nuevo o escríbanos directamente.',
+        sending: 'Enviando…',
+      },
+    };
+
+    const m = msg[lang] ?? msg.en;
+    const btnLabel = submitBtn.querySelector('.btn-label') as HTMLElement;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const originalLabel = btnLabel.textContent ?? '';
+      submitBtn.disabled = true;
+      btnLabel.textContent = m.sending;
+      feedback.textContent = '';
+      feedback.className = 'form-feedback';
+
+      const body = {
+        name:    (form.querySelector('[name="name"]') as HTMLInputElement).value.trim(),
+        company: (form.querySelector('[name="company"]') as HTMLInputElement).value.trim(),
+        email:   (form.querySelector('[name="email"]') as HTMLInputElement).value.trim(),
+        market:  (form.querySelector('[name="market"]') as HTMLInputElement).value.trim(),
+        service: (form.querySelector('[name="service"]') as HTMLSelectElement).value,
+        problem: (form.querySelector('[name="problem"]') as HTMLTextAreaElement).value.trim(),
+        lang:    (form.querySelector('[name="lang"]') as HTMLInputElement).value,
+      };
+
+      try {
+        const res = await fetch('/api/contact', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify(body),
+        });
+
+        if (res.ok) {
+          feedback.textContent = m.success;
+          feedback.className   = 'form-feedback form-feedback--success';
+          form.reset();
+        } else {
+          const json = await res.json().catch(() => ({})) as { error?: string };
+          feedback.textContent = json.error ?? m.error;
+          feedback.className   = 'form-feedback form-feedback--error';
+        }
+      } catch {
+        feedback.textContent = m.error;
+        feedback.className   = 'form-feedback form-feedback--error';
+      } finally {
+        submitBtn.disabled   = false;
+        btnLabel.textContent = originalLabel;
+      }
+    });
+  }
+</script>

@@ -1,0 +1,41 @@
+---
+import { ui } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+import { getContent } from '../i18n/content';
+import '../styles/components/about.css';
+
+const lang = (Astro.currentLocale ?? 'en') as Lang;
+const t = ui[lang].about;
+const { stats } = getContent(lang);
+---
+<section class="about section section-1" id="about" aria-labelledby="about-title">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-left">
+        <p class="section-eyebrow reveal">{t.eyebrow}</p>
+        <h2 class="section-title reveal" id="about-title" set:html={t.h2} />
+      </div>
+      <div class="about-right">
+        <p class="about-body reveal">{t.body}</p>
+        <p class="about-sub reveal">{t.sub}</p>
+        <div class="about-badge reveal">
+          <span class="badge-dot" aria-hidden="true"></span>
+          {t.badge}
+        </div>
+      </div>
+    </div>
+
+    <ul class="stats-row reveal" role="list">
+      {stats.map((s) => (
+        <li class="stat-pill">
+          <span
+            class:list={['stat-num', { stone: s.stone }]}
+            data-target={s.target}
+            data-suffix={s.suffix}
+          >{s.value}</span>
+          <span class="stat-lbl">{s.label}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
