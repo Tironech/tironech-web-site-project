@@ -12,7 +12,7 @@
 
 .why-item {
   display: flex; align-items: flex-start; gap: 1.25rem;
-  background: var(--bg-card); padding: 1.75rem 2rem 2.5rem;
+  background: var(--bg-card); padding: 1.75rem 2rem 3%;
   transition: background 0.25s;
 }
 .why-item:hover { background: var(--bg-card-2); }
