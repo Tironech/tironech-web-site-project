@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import heroImg from '../assets/img/hero.jpg';
 import { ui } from '../i18n/ui';
 import type { Lang } from '../i18n/ui';
 import { getContent } from '../i18n/content';
@@ -12,13 +14,13 @@ const { markets } = getContent(lang);
   <div class="hero-gradient" data-mouse-gradient aria-hidden="true"></div>
   <div class="hero-noise" aria-hidden="true"></div>
   <div class="hero-img-wrap" aria-hidden="true">
-    <img
-      src="/assets/img/hero.jpg"
+    <Image
+      src={heroImg}
       alt="Espacio de trabajo de ingeniería con interfaces de código e inteligencia artificial"
       class="hero-bg-img"
-      fetchpriority="high"
+      format="webp"
       loading="eager"
-      decoding="async"
+      fetchpriority="high"
     />
     <div class="hero-img-tint"></div>
   </div>

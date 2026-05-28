@@ -1,8 +1,12 @@
 ---
 import SEO from '../components/SEO.astro';
+import { getImage } from 'astro:assets';
+import heroSrc from '../assets/img/hero.jpg';
 import { ui } from '../i18n/ui';
 import type { Lang } from '../i18n/ui';
 import '../styles/global.css';
+
+const heroPreload = await getImage({ src: heroSrc, format: 'webp' });
 
 interface Props {
   title?:        string;
@@ -50,20 +54,27 @@ const {
   <link rel="alternate" hreflang="x-default" href="https://tironech.com/" />
 
   <!-- Preload hero -->
-  <link rel="preload" as="image" href="/assets/img/hero.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" href={heroPreload.src} fetchpriority="high" type="image/webp" />
 
-  <!-- Fonts -->
+  <!-- Fonts — non-blocking load -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    rel="stylesheet"
+    rel="preload"
+    as="style"
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Lato:wght@300;400;700;900&family=JetBrains+Mono:wght@400;500&display=swap"
+    onload="this.onload=null;this.rel='stylesheet'"
   />
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Lato:wght@300;400;700;900&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+  </noscript>
 
   <!-- GSAP (lib estática desde public/) -->
   <script is:inline defer src="/lib/gsap.min.js"></script>
   <script is:inline defer src="/lib/ScrollTrigger.min.js"></script>
-  <script is:inline defer src="/lib/manifest.js"></script>
   <script is:inline defer src="/scripts/main.js"></script>
 </head>
 <body>

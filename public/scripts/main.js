@@ -65,15 +65,24 @@
 
     var sections = qsa("section[id]");
     var links    = qsa(".nav-link");
+    var sectionOffsets = [];
+
+    function buildOffsets() {
+      sectionOffsets = sections.map(function (s) {
+        return { id: s.id, top: s.offsetTop };
+      });
+    }
+    buildOffsets();
+    window.addEventListener("resize", buildOffsets, { passive: true });
+
     function highlightNav() {
       var scrollY = window.scrollY + 120;
       var current = "";
-      sections.forEach(function (s) {
-        if (s.offsetTop <= scrollY) current = s.id;
-      });
+      for (var i = 0; i < sectionOffsets.length; i++) {
+        if (sectionOffsets[i].top <= scrollY) current = sectionOffsets[i].id;
+      }
       links.forEach(function (l) {
-        var href = l.getAttribute("href").slice(1);
-        l.classList.toggle("is-active", href === current);
+        l.classList.toggle("is-active", l.getAttribute("href").slice(1) === current);
       });
     }
     window.addEventListener("scroll", highlightNav, { passive: true });
@@ -88,6 +97,8 @@
     var H = window.innerHeight;
     var cx = 0.5, cy = 0.4;
     var tx = cx, ty = cy;
+    var rafId = null;
+    var isVisible = true;
 
     function lerp(a, b, t) { return a + (b - a) * t; }
 
@@ -96,8 +107,14 @@
       cy = lerp(cy, ty, 0.06);
       el.style.setProperty("--mx", (cx * 100).toFixed(2) + "%");
       el.style.setProperty("--my", (cy * 100).toFixed(2) + "%");
-      requestAnimationFrame(tick);
+      rafId = isVisible ? requestAnimationFrame(tick) : null;
     }
+
+    var heroObserver = new IntersectionObserver(function (entries) {
+      isVisible = entries[0].isIntersecting;
+      if (isVisible && !rafId) rafId = requestAnimationFrame(tick);
+    }, { threshold: 0 });
+    heroObserver.observe(el.closest(".hero") || el);
 
     window.addEventListener("mousemove", function (e) {
       tx = e.clientX / W;
@@ -109,7 +126,7 @@
       H = window.innerHeight;
     }, { passive: true });
 
-    requestAnimationFrame(tick);
+    rafId = requestAnimationFrame(tick);
   }
 
   /* ─── Custom cursor ──────────────────────────────────────────── */
@@ -229,57 +246,31 @@
     if (window.matchMedia("(pointer: coarse)").matches) return;
 
     qsa(".entry-card, .enterprise-card").forEach(function (card) {
+      var rafId = null;
+      var pendingE = null;
+
       card.addEventListener("mousemove", function (e) {
-        var rect = card.getBoundingClientRect();
-        var cx   = rect.left + rect.width  / 2;
-        var cy   = rect.top  + rect.height / 2;
-        var dx   = (e.clientX - cx) / (rect.width  / 2);
-        var dy   = (e.clientY - cy) / (rect.height / 2);
-        card.style.transform = "perspective(900px) rotateY(" + (dx * 4) + "deg) rotateX(" + (-dy * 3) + "deg) translateZ(6px)";
+        pendingE = e;
+        if (rafId) return;
+        rafId = requestAnimationFrame(function () {
+          rafId = null;
+          if (!pendingE) return;
+          var rect = card.getBoundingClientRect();
+          var cx   = rect.left + rect.width  / 2;
+          var cy   = rect.top  + rect.height / 2;
+          var dx   = (pendingE.clientX - cx) / (rect.width  / 2);
+          var dy   = (pendingE.clientY - cy) / (rect.height / 2);
+          card.style.transform = "perspective(900px) rotateY(" + (dx * 4) + "deg) rotateX(" + (-dy * 3) + "deg) translateZ(6px)";
+          pendingE = null;
+        });
       });
       card.addEventListener("mouseleave", function () {
+        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+        pendingE = null;
         card.style.transform = "";
       });
     });
   }
-
-  /* ─── Form handler ───────────────────────────────────────────── */
-  function initForms() {
-    var form = qs(".contact-form");
-    if (!form) return;
-
-    var emailField = qs("[type='email']", form);
-    if (emailField) {
-      emailField.addEventListener("blur", function () {
-        var val = emailField.value.trim();
-        emailField.setCustomValidity(
-          val && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)
-            ? "Por favor ingrese un email válido."
-            : ""
-        );
-      });
-    }
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var btn = qs("[type='submit']", form);
-      if (btn) {
-        btn.textContent = "Enviando…";
-        btn.disabled = true;
-      }
-
-      setTimeout(function () {
-        form.innerHTML = [
-          '<div class="form-success" role="alert">',
-          '  <div class="success-icon" aria-hidden="true">✓</div>',
-          '  <h3 class="success-title">Mensaje recibido</h3>',
-          '  <p class="success-body">Nos pondremos en contacto en las próximas 24 horas hábiles para coordinar su sesión de descubrimiento.</p>',
-          '</div>'
-        ].join("");
-      }, 900);
-    });
-  }
-
   /* ─── Hero scroll cue fade ───────────────────────────────────── */
   function initScrollCue() {
     var cue = qs(".hero-scroll-cue");
@@ -400,17 +391,22 @@
 
   /* ─── Boot ───────────────────────────────────────────────────── */
   function boot() {
-    safe(initSmoothScroll,  "SmoothScroll");
-    safe(initNav,           "Nav");
-    safe(initMouseGradient, "MouseGradient");
-    safe(initCursor,        "Cursor");
-    safe(initReveals,       "Reveals");
-    safe(initCountUp,       "CountUp");
-    safe(initCardHover,     "CardHover");
-    safe(initForms,         "Forms");
-    safe(initScrollCue,     "ScrollCue");
-    safe(initCardTags,      "CardTags");
-    safe(initGsap,          "GSAP");
+    /* Critical — necesarios antes de la primera interacción */
+    safe(initSmoothScroll, "SmoothScroll");
+    safe(initNav,          "Nav");
+
+    /* No críticos — diferidos al primer momento idle del browser */
+    var ric = window.requestIdleCallback || function (fn) { setTimeout(fn, 1); };
+    ric(function () {
+      safe(initMouseGradient, "MouseGradient");
+      safe(initCursor,        "Cursor");
+      safe(initReveals,       "Reveals");
+      safe(initCountUp,       "CountUp");
+      safe(initCardHover,     "CardHover");
+      safe(initScrollCue,     "ScrollCue");
+      safe(initCardTags,      "CardTags");
+      safe(initGsap,          "GSAP");
+    });
   }
 
   if (document.readyState === "loading") {

@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import aiSectionImg from '../assets/img/ai-section.jpg';
 import { ui } from '../i18n/ui';
 import type { Lang } from '../i18n/ui';
 import { getContent } from '../i18n/content';
@@ -10,7 +12,7 @@ const { contactSteps } = getContent(lang);
 ---
 <section class="contact section section-2" id="contact" aria-labelledby="contact-title">
   <div class="contact-hero-bg" aria-hidden="true">
-    <img src="/assets/img/ai-section.jpg" alt="Panel de automatización y testing de calidad con inteligencia artificial" loading="lazy" decoding="async" />
+    <Image src={aiSectionImg} alt="Panel de automatización y testing de calidad con inteligencia artificial" format="webp" loading="lazy" />
     <div class="contact-tint"></div>
   </div>
   <div class="container">

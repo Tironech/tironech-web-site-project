@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { ui } from '../i18n/ui';
 import type { Lang } from '../i18n/ui';
 import '../styles/components/nav.css';
@@ -11,7 +12,7 @@ const ls = ui[lang].langSwitch;
   <nav class="nav-inner container" aria-label={t.ariaLabel}>
 
     <a href="#home" class="nav-logo" aria-label="Tironech — Inicio">
-      <img src="/assets/logo/mark.png" alt="Tironech logo" width="70" height="75" loading="eager" decoding="sync" />
+      <Image src="/assets/logo/logo.webp" alt="Tironech logo" width={70} height={75} loading="eager" fetchpriority="high" />
       <span class="logo-full">TIRONECH</span>
     </a>
 
