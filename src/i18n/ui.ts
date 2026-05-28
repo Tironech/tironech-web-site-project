@@ -181,7 +181,7 @@ export const ui = {
       serviceDefault: 'Seleccione una solución',
       problemLbl: 'Describa su problema técnico actual *',
       problemPh: 'Ej. Tenemos bugs frecuentes en producción, nuestro QA manual no escala y los releases toman demasiado tiempo…',
-      submitBtn: 'Agendar sesión de descubrimiento gratuita',
+      submitBtn: 'Agendar Sesión de Descubrimiento Gratuita',
       disclaimer: 'Respondemos en menos de 24 horas hábiles. Sin ventas agresivas — solo una conversación técnica honesta. Al enviar acepta nuestra <a href="/es/privacy" class="disclaimer-link">Política de Privacidad</a>.',
       promiseTitle: '¿Qué ocurre después de enviar el formulario?',
       directLabel: 'Contacto directo:',

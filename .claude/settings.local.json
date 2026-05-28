@@ -12,7 +12,9 @@
       "Bash(git stash *)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://tironech.com)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://tironech.com/es/)",
-      "Bash(npx vercel *)"
+      "Bash(npx vercel *)",
+      "PowerShell(winget install *)",
+      "Bash(git commit -m ' *)"
     ],
     "additionalDirectories": [
       "e:\\Tironech Projects\\Tironech Web Site Project",
