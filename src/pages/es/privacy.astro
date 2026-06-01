@@ -1,0 +1,199 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Política de Privacidad · Tironech"
+  description="Cómo Tironech recopila, usa y protege tus datos personales."
+>
+  <Nav />
+  <main id="main-content" class="policy-page">
+    <div class="container">
+
+      <header class="policy-header">
+        <p class="section-eyebrow">LEGAL</p>
+        <h1>Política de Privacidad</h1>
+        <p class="policy-meta">Última actualización: <time datetime="2026-05-27">27 de mayo de 2026</time></p>
+      </header>
+
+      <div class="policy-body">
+
+        <section>
+          <h2>1. Quiénes somos</h2>
+          <p>Tironech es una boutique de ingeniería de alto valor que ofrece servicios de QA, IA y desarrollo de software para empresas en Estados Unidos y América Latina. Para cualquier asunto relacionado con privacidad, contáctenos en <a href="mailto:raul.gomez@tironech.com">raul.gomez@tironech.com</a>.</p>
+        </section>
+
+        <section>
+          <h2>2. Qué datos recopilamos</h2>
+          <p>Cuando envía el formulario de contacto en nuestro sitio web recopilamos:</p>
+          <ul>
+            <li><strong>Nombre completo</strong></li>
+            <li><strong>Nombre de la empresa</strong></li>
+            <li><strong>Correo electrónico corporativo</strong></li>
+            <li><strong>País o mercado</strong> (opcional)</li>
+            <li><strong>Solución de interés</strong></li>
+            <li><strong>Descripción de su problema técnico</strong></li>
+          </ul>
+          <p>No recopilamos datos de pago, datos personales sensibles, ni ninguna información más allá de lo que usted proporciona voluntariamente en el formulario.</p>
+        </section>
+
+        <section>
+          <h2>3. Para qué usamos sus datos</h2>
+          <p>Usamos sus datos exclusivamente para:</p>
+          <ul>
+            <li>Responder a su consulta y agendar una sesión de descubrimiento</li>
+            <li>Enviarle una confirmación automática de recepción</li>
+            <li>Evaluar qué servicio se adapta mejor a su situación técnica</li>
+          </ul>
+          <p>No utilizamos sus datos para campañas de marketing, no los vendemos a terceros y no lo agregamos a listas de correo sin su consentimiento explícito.</p>
+        </section>
+
+        <section>
+          <h2>4. Cómo se procesan sus datos</h2>
+          <p>Cuando envía el formulario, sus datos se transmiten mediante HTTPS cifrado y son procesados por nuestra API de contacto alojada en <strong>Vercel</strong> (USA). Luego se entregan por correo electrónico vía <strong>Zoho Mail</strong> (SMTP) a los buzones corporativos de nuestro equipo. No almacenamos sus datos en ninguna base de datos: solo existen en nuestras cuentas de correo.</p>
+        </section>
+
+        <section>
+          <h2>5. Servicios de terceros</h2>
+          <ul>
+            <li><strong>Vercel Inc.</strong> — aloja nuestro sitio web y API. <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Política de privacidad de Vercel</a></li>
+            <li><strong>Zoho Corporation</strong> — servicio de correo para recibir y responder consultas. <a href="https://www.zoho.com/privacy.html" target="_blank" rel="noopener">Política de privacidad de Zoho</a></li>
+            <li><strong>Google Fonts</strong> — entrega de tipografías vía CDN de Google. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de privacidad de Google</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>6. Retención de datos</h2>
+          <p>Sus datos se conservan en nuestras cuentas de correo durante el tiempo necesario para gestionar la relación comercial. Si no se establece un compromiso tras el contacto inicial, eliminamos sus datos en un plazo de <strong>90 días</strong>.</p>
+        </section>
+
+        <section>
+          <h2>7. Sus derechos</h2>
+          <p>Usted tiene derecho a:</p>
+          <ul>
+            <li><strong>Acceso</strong> — solicitar una copia de los datos que tenemos sobre usted</li>
+            <li><strong>Rectificación</strong> — pedirnos que corrijamos datos inexactos</li>
+            <li><strong>Supresión</strong> — solicitar la eliminación de sus datos personales</li>
+            <li><strong>Oposición</strong> — oponerse a cualquier tratamiento de sus datos</li>
+          </ul>
+          <p>Para ejercer cualquiera de estos derechos, escríbanos a <a href="mailto:raul.gomez@tironech.com">raul.gomez@tironech.com</a> y responderemos en un plazo de 10 días hábiles.</p>
+        </section>
+
+        <section>
+          <h2>8. Seguridad</h2>
+          <p>Todos los datos se transmiten mediante HTTPS. El acceso a nuestras cuentas de correo está protegido por contraseñas seguras y autenticación de dos factores. Aplicamos medidas técnicas y organizativas razonables para proteger su información.</p>
+        </section>
+
+        <section>
+          <h2>9. Cambios en esta política</h2>
+          <p>Podemos actualizar esta política ocasionalmente. Cuando lo hagamos, revisaremos la fecha de "Última actualización" al inicio de esta página. Le recomendamos revisarla periódicamente.</p>
+        </section>
+
+        <section>
+          <h2>10. Contacto</h2>
+          <p>¿Preguntas sobre esta Política de Privacidad? Escríbanos a <a href="mailto:raul.gomez@tironech.com">raul.gomez@tironech.com</a>.</p>
+        </section>
+
+        <div class="policy-lang-switch">
+          <a href="/privacy">View in English →</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .policy-page {
+    padding-block: var(--section-pad);
+    background: var(--bg);
+  }
+
+  .policy-header {
+    max-width: 720px;
+    margin-bottom: 3rem;
+  }
+
+  .policy-header h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.03em;
+    margin: 0.5rem 0 0.75rem;
+  }
+
+  .policy-meta {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.05em;
+  }
+
+  .policy-body {
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .policy-body section h2 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--copper-light);
+    letter-spacing: -0.01em;
+    margin: 0 0 0.85rem;
+  }
+
+  .policy-body p,
+  .policy-body li {
+    font-family: var(--font-body);
+    font-size: 0.97rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+  }
+
+  .policy-body ul {
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin: 0.5rem 0;
+  }
+
+  .policy-body a {
+    color: var(--copper-light);
+    border-bottom: 1px solid var(--copper-line);
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .policy-body a:hover {
+    color: var(--copper-hover);
+    border-color: var(--copper-hover);
+  }
+
+  .policy-body section {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .policy-body section:last-of-type {
+    border-bottom: none;
+  }
+
+  .policy-lang-switch {
+    margin-top: 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .policy-lang-switch a {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+  }
+</style>

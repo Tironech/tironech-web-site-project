@@ -146,6 +146,14 @@ vite.config.ts.timestamp-*
 .astro/
 dist/
 
+# Vercel
+.vercel/
+.env.local
+
+# macOS
+.DS_Store
+
 # Windows
 desktop.ini
 Thumbs.db
+.env*

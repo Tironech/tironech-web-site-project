@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="404 — Page not found · Tironech"
+  description="The page you're looking for doesn't exist."
+>
+  <Nav />
+  <main id="main-content" class="notfound">
+    <div class="notfound-inner">
+
+      <p class="notfound-eyebrow">ERROR 404</p>
+
+      <div class="notfound-num" aria-hidden="true">404</div>
+
+      <h1 class="notfound-title">
+        Page not found.<br />
+        <span>Página no encontrada.</span>
+      </h1>
+
+      <p class="notfound-sub">
+        The URL you visited doesn't exist or was moved.<br />
+        La URL que visitaste no existe o fue movida.
+      </p>
+
+      <div class="notfound-actions">
+        <a href="/" class="btn btn-cta">
+          ← Back to home
+        </a>
+        <a href="/#contact" class="btn btn-ghost">
+          Contact us →
+        </a>
+      </div>
+
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .notfound {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: var(--section-pad);
+    background: var(--bg);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* subtle grid background */
+  .notfound::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(153,94,49,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(153,94,49,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .notfound-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 600px;
+    padding-inline: var(--gutter);
+  }
+
+  .notfound-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    color: var(--copper-light);
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .notfound-num {
+    font-family: var(--font-display);
+    font-size: clamp(7rem, 22vw, 14rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(153,94,49,0.3);
+    background: linear-gradient(135deg, rgba(153,94,49,0.15) 0%, transparent 70%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    user-select: none;
+    margin: -1rem 0;
+  }
+
+  .notfound-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.03em;
+    line-height: 1.25;
+    margin: 0;
+  }
+
+  .notfound-title span {
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+
+  .notfound-sub {
+    font-size: 0.95rem;
+    color: var(--ink-mute);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .notfound-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--line-2);
+    border-radius: 8px;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--copper-line);
+    color: var(--copper-light);
+  }
+</style>

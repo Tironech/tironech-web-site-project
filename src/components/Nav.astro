@@ -1,7 +1,8 @@
 ---
-import '../styles/components/nav.css';
+import { Image } from 'astro:assets';
 import { ui } from '../i18n/ui';
 import type { Lang } from '../i18n/ui';
+import '../styles/components/nav.css';
 
 const lang = (Astro.currentLocale ?? 'en') as Lang;
 const t = ui[lang].nav;
@@ -11,7 +12,7 @@ const ls = ui[lang].langSwitch;
   <nav class="nav-inner container" aria-label={t.ariaLabel}>
 
     <a href="#home" class="nav-logo" aria-label="Tironech — Inicio">
-      <img src="/assets/logo/mark.png" alt="Tironech logo" width="56" height="60" loading="eager" decoding="sync" />
+      <Image src="/assets/logo/logo.webp" alt="Tironech logo" width={70} height={75} loading="eager" fetchpriority="high" />
       <span class="logo-full">TIRONECH</span>
     </a>
 
@@ -45,102 +46,6 @@ const ls = ui[lang].langSwitch;
     <li><a href="#enterprise" class="mobile-link">{t.enterprise}</a></li>
     <li><a href="#why-us"     class="mobile-link">{t.whyUs}</a></li>
     <li><a href="#leadership" class="mobile-link">{t.team}</a></li>
-    <li><a href={ls.href}     class="mobile-link mobile-lang">{ls.label}</a></li>
     <li><a href="#contact"    class="mobile-link mobile-cta">{t.cta}</a></li>
   </ul>
 </div>
-
-<style>
-  .site-nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 100;
-    transition: background 0.4s var(--ease-soft), box-shadow 0.4s;
-  }
-  .site-nav.is-scrolled {
-    background: rgba(26, 26, 26, 0.94);
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
-    box-shadow: 0 1px 0 var(--line);
-  }
-
-  .nav-inner {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 2rem; height: 80px;
-  }
-
-  .nav-logo {
-    display: flex; align-items: center; gap: 0.7rem;
-    flex-shrink: 0;
-  }
-  .nav-logo img { flex-shrink: 0; }
-  .logo-full {
-    font-family: 'Poppins', 'Inter', sans-serif;
-    font-weight: 800; font-size: 1.15rem;
-    color: var(--ink); letter-spacing: 2.5px;
-  }
-
-  .nav-links {
-    display: none; align-items: center; gap: 0.2rem;
-    list-style: none; padding: 0;
-  }
-  .nav-link {
-    font-size: 0.82rem; font-weight: 500; color: var(--ink-soft);
-    padding: 0.4rem 0.7rem; border-radius: 6px;
-    transition: color 0.2s, background 0.2s;
-  }
-  .nav-link:hover { color: var(--ink); background: var(--line); }
-
-  .nav-actions { display: flex; align-items: center; gap: 0.75rem; }
-
-  .lang-btn {
-    font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700;
-    letter-spacing: 0.12em; color: var(--ink-mute);
-    border: 1px solid var(--line-2); border-radius: 6px;
-    padding: 0.3rem 0.65rem;
-    transition: color 0.2s, border-color 0.2s, background 0.2s;
-  }
-  .lang-btn:hover { color: var(--ink); border-color: var(--copper-line); background: var(--copper-tint); }
-
-  .nav-burger {
-    display: flex; flex-direction: column; gap: 5px;
-    padding: 8px; border-radius: 6px;
-    min-width: 44px; min-height: 44px;
-    justify-content: center; align-items: center;
-  }
-  .nav-burger span {
-    display: block; width: 22px; height: 2px;
-    background: var(--ink); border-radius: 2px;
-    transition: transform 0.3s var(--ease-out), opacity 0.2s;
-  }
-  .nav-burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .nav-burger.is-open span:nth-child(2) { opacity: 0; }
-  .nav-burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-  .mobile-menu {
-    position: fixed; inset: 80px 0 0 0;
-    background: var(--bg);
-    padding: 2rem var(--gutter);
-    transform: translateX(100%);
-    transition: transform 0.4s var(--ease-out);
-    z-index: 200; border-top: 1px solid var(--line);
-    overflow-y: auto;
-  }
-  .mobile-menu.is-open { transform: none; }
-  .mobile-menu ul { list-style: none; padding: 0; }
-
-  .mobile-link {
-    font-family: var(--font-display); font-size: 1.5rem;
-    font-weight: 700; color: var(--ink-soft);
-    padding: 0.75rem 0; border-bottom: 1px solid var(--line);
-    transition: color 0.2s;
-    min-height: 56px; display: flex; align-items: center;
-  }
-  .mobile-link:hover { color: var(--ink); }
-  .mobile-lang { color: var(--ink-mute); font-size: 1rem; letter-spacing: 0.08em; }
-  .mobile-cta { color: var(--stone-light); border-bottom: none; margin-top: 1rem; }
-
-  @media (min-width: 720px) {
-    .nav-links  { display: flex; }
-    .nav-burger { display: none; }
-  }
-</style>

@@ -1,16 +1,18 @@
 ---
+import { Image } from 'astro:assets';
+import aiSectionImg from '../assets/img/ai-section.jpg';
 import { ui } from '../i18n/ui';
 import type { Lang } from '../i18n/ui';
-import contentEn from '../data/content.en.json';
-import contentEs from '../data/content.es.json';
+import { getContent } from '../i18n/content';
+import '../styles/components/contact.css';
 
 const lang = (Astro.currentLocale ?? 'en') as Lang;
 const t = ui[lang].contact;
-const { contactSteps } = lang === 'es' ? contentEs : contentEn;
+const { contactSteps } = getContent(lang);
 ---
 <section class="contact section section-2" id="contact" aria-labelledby="contact-title">
   <div class="contact-hero-bg" aria-hidden="true">
-    <img src="/assets/img/ai-section.jpg" alt="Panel de automatización y testing de calidad con inteligencia artificial" loading="lazy" decoding="async" />
+    <Image src={aiSectionImg} alt="Panel de automatización y testing de calidad con inteligencia artificial" format="webp" loading="lazy" />
     <div class="contact-tint"></div>
   </div>
   <div class="container">
@@ -20,6 +22,7 @@ const { contactSteps } = lang === 'es' ? contentEs : contentEn;
 
     <div class="contact-wrap">
       <form class="contact-form reveal" id="contact-form" name="tironech-contact" novalidate>
+        <input type="hidden" name="lang" value={lang} />
 
         <div class="form-row-2">
           <div class="form-group">
@@ -66,10 +69,9 @@ const { contactSteps } = lang === 'es' ? contentEs : contentEn;
 
         <button type="submit" class="btn btn-cta btn-full btn-lg" id="contact-submit">
           <span class="btn-label">{t.submitBtn}</span>
-          <span class="btn-arrow" aria-hidden="true">→</span>
         </button>
 
-        <p class="form-disclaimer">{t.disclaimer}</p>
+        <p class="form-disclaimer" set:html={t.disclaimer} />
         <div id="form-feedback" class="form-feedback" role="alert" aria-live="polite"></div>
       </form>
 
@@ -93,118 +95,6 @@ const { contactSteps } = lang === 'es' ? contentEs : contentEn;
     </div>
   </div>
 </section>
-
-<style>
-  .contact {
-    padding-block: var(--section-pad);
-    background: var(--bg-2);
-    border-top: 1px solid var(--line);
-    position: relative;
-  }
-  .contact-hero-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
-  .contact-hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.05; filter: grayscale(1); }
-  .contact-tint { position: absolute; inset: 0; background: var(--bg-2); }
-  .contact > .container { position: relative; z-index: 1; }
-
-  .contact-wrap { display: grid; gap: 3rem; }
-
-  .contact-form {
-    background: var(--bg-card); border: 1px solid var(--line);
-    border-radius: 16px; padding: 2.5rem;
-    display: flex; flex-direction: column; gap: 1.25rem;
-  }
-
-  .form-row-2 { display: grid; gap: 1.25rem; }
-  .form-group  { display: flex; flex-direction: column; gap: 0.4rem; }
-
-  .form-label {
-    font-family: var(--font-mono); font-size: 0.67rem; letter-spacing: 0.12em;
-    color: var(--ink-mute); text-transform: uppercase;
-  }
-  .form-input {
-    background: var(--bg-2); border: 1px solid var(--line-2);
-    border-radius: 8px; padding: 0.75rem 1rem;
-    color: var(--ink); font-family: var(--font-body);
-    font-size: 1rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    -webkit-appearance: none; appearance: none; width: 100%;
-    min-height: 48px;
-  }
-  .form-input:focus {
-    outline: none; border-color: var(--copper-light);
-    box-shadow: 0 0 0 3px rgba(153,94,49,0.15);
-  }
-  .form-input::placeholder { color: var(--ink-mute); }
-  .form-select   { cursor: pointer; }
-  .form-textarea { resize: vertical; min-height: 110px; }
-
-  .form-disclaimer {
-    font-size: 0.78rem; color: var(--ink-mute); text-align: center;
-    line-height: 1.6; margin-top: -0.5rem;
-  }
-
-  .contact-side { display: flex; flex-direction: column; gap: 2rem; }
-
-  .contact-promise {
-    background: var(--bg-card); border: 1px solid var(--line);
-    border-radius: 16px; padding: 2rem;
-  }
-  .contact-promise h3 {
-    font-family: var(--font-display); font-size: 1.05rem; font-weight: 700;
-    color: var(--ink); margin-bottom: 1.5rem; letter-spacing: -0.01em;
-  }
-
-  .contact-steps { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.25rem; }
-  .contact-steps li { display: flex; gap: 1rem; align-items: flex-start; }
-  .step-num {
-    font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700;
-    color: var(--copper-light); letter-spacing: 0.05em;
-    width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
-    background: rgba(153,94,49,0.15); border: 1px solid var(--copper-line);
-    display: flex; align-items: center; justify-content: center;
-    margin-top: 0.1rem;
-  }
-  .contact-steps strong { display: block; font-size: 0.9rem; color: var(--ink); margin-bottom: 0.25rem; }
-  .contact-steps p { font-size: 0.82rem; color: var(--ink-mute); line-height: 1.6; margin: 0; }
-
-@media (max-width: 539px) {
-    .contact-form    { padding: 1.75rem 1.25rem; }
-    .contact-promise { padding: 1.5rem 1.25rem; }
-  }
-  @media (min-width: 540px) {
-    .form-row-2 { grid-template-columns: 1fr 1fr; }
-  }
-  @media (min-width: 720px) {
-    .contact-wrap { grid-template-columns: 1.3fr 1fr; align-items: start; }
-  }
-
-  .form-feedback {
-    display: none;
-    padding: 0.85rem 1.1rem;
-    border-radius: 8px;
-    font-size: 0.88rem;
-    line-height: 1.5;
-    text-align: center;
-  }
-  .form-feedback--success {
-    display: block;
-    background: rgba(80, 160, 100, 0.12);
-    border: 1px solid rgba(80, 160, 100, 0.35);
-    color: #5fad74;
-  }
-  .form-feedback--error {
-    display: block;
-    background: rgba(200, 70, 70, 0.1);
-    border: 1px solid rgba(200, 70, 70, 0.3);
-    color: #e07070;
-  }
-
-  #contact-submit:disabled {
-    opacity: 0.65;
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-</style>
 
 <script>
   const form     = document.getElementById('contact-form') as HTMLFormElement | null;
@@ -246,6 +136,7 @@ const { contactSteps } = lang === 'es' ? contentEs : contentEn;
         market:  (form.querySelector('[name="market"]') as HTMLInputElement).value.trim(),
         service: (form.querySelector('[name="service"]') as HTMLSelectElement).value,
         problem: (form.querySelector('[name="problem"]') as HTMLTextAreaElement).value.trim(),
+        lang:    (form.querySelector('[name="lang"]') as HTMLInputElement).value,
       };
 
       try {

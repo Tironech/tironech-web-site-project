@@ -12,7 +12,7 @@ export const ui = {
       mobileSolutions: 'Entry solutions',
     },
     hero: {
-      kicker: 'ENGINEERING BOUTIQUE · B2B · USA & LATAM',
+      kicker: 'TECH HUB & SOFTWARE · B2B · USA & LATAM',
       h1Line1: 'Bugs in production.',
       h1Line2: 'No senior team.',
       h1Line3: "Technology that doesn't scale.",
@@ -35,7 +35,7 @@ export const ui = {
     },
     whyUs: {
       eyebrow: 'WHY CHOOSE TIRONECH',
-      h2: 'What sets an engineering boutique<br />apart from <em>a generic agency</em>.',
+      h2: 'What sets apart simply delivering a project<br />from <em>solving business problems with technology</em>.',
     },
     entryServices: {
       eyebrow: 'ENTRY SOLUTIONS',
@@ -47,7 +47,7 @@ export const ui = {
     enterprise: {
       eyebrow: 'ENTERPRISE SOLUTIONS · HIGH-TICKET',
       h2: 'For companies that require<br /><em>senior technical leadership</em>.',
-      sub: 'High-impact services for US startups that need a CTO and for industries that want to bring AI to the production floor.',
+      sub: 'High-impact services for startups that need a CTO and for industries that want to bring AI to the production floor.',
       includesAriaLabel: 'Includes',
     },
     leadership: {
@@ -75,7 +75,7 @@ export const ui = {
       problemLbl: 'Describe your current technical problem *',
       problemPh: "e.g. We have frequent production bugs, our manual QA doesn't scale and releases take too long…",
       submitBtn: 'Schedule free discovery session',
-      disclaimer: 'We respond in less than 24 business hours. No aggressive sales — just an honest technical conversation.',
+      disclaimer: 'We respond in less than 24 business hours. No aggressive sales — just an honest technical conversation. By submitting you agree to our <a href="/privacy" class="disclaimer-link">Privacy Policy</a>.',
       promiseTitle: 'What happens after you submit the form?',
       directLabel: 'Direct contact:',
       serviceOptions: [
@@ -104,8 +104,6 @@ export const ui = {
     meta: {
       title: 'Tironech — High-value engineering. QA, AI & Dev.',
       description: 'Tironech — High-value engineering boutique. Advanced AI-powered QA, custom development and AI solutions for startups and companies in the US and Latin America.',
-      ogTitle: 'Tironech — High-value engineering',
-      ogDescription: 'Advanced AI-powered QA, Fractional CTO, Edge AI Vision and custom development for startups and companies in the US and Latin America.',
     },
   },
   es: {
@@ -121,7 +119,7 @@ export const ui = {
       mobileSolutions: 'Soluciones de entrada',
     },
     hero: {
-      kicker: 'BOUTIQUE DE INGENIERÍA · B2B · USA & LATAM',
+      kicker: 'TECH HUB & SOFTWARE · B2B · USA & LATAM',
       h1Line1: 'Bugs en producción.',
       h1Line2: 'Sin equipo senior.',
       h1Line3: 'Tecnología que no escala.',
@@ -144,7 +142,7 @@ export const ui = {
     },
     whyUs: {
       eyebrow: 'POR QUÉ ELEGIR TIRONECH',
-      h2: 'Lo que diferencia a una boutique<br />de ingeniería de <em>una agencia genérica</em>.',
+      h2: 'Lo que diferencia entre simplemente entregar un proyecto<br />y <em>resolver problemas de negocio con tecnología</em>.',
     },
     entryServices: {
       eyebrow: 'SOLUCIONES DE ENTRADA',
@@ -156,7 +154,7 @@ export const ui = {
     enterprise: {
       eyebrow: 'SOLUCIONES ENTERPRISE · HIGH-TICKET',
       h2: 'Para empresas que requieren<br /><em>liderazgo técnico senior</em>.',
-      sub: 'Servicios de alto impacto para startups en USA que necesitan un CTO y para industrias que quieren llevar la IA al piso de producción.',
+      sub: 'Servicios de alto impacto para startups que necesitan un CTO y para industrias que quieren llevar la IA al piso de producción.',
       includesAriaLabel: 'Incluye',
     },
     leadership: {
@@ -183,8 +181,8 @@ export const ui = {
       serviceDefault: 'Seleccione una solución',
       problemLbl: 'Describa su problema técnico actual *',
       problemPh: 'Ej. Tenemos bugs frecuentes en producción, nuestro QA manual no escala y los releases toman demasiado tiempo…',
-      submitBtn: 'Agendar sesión de descubrimiento gratuita',
-      disclaimer: 'Respondemos en menos de 24 horas hábiles. Sin ventas agresivas — solo una conversación técnica honesta.',
+      submitBtn: 'Agendar Sesión de Descubrimiento Gratuita',
+      disclaimer: 'Respondemos en menos de 24 horas hábiles. Sin ventas agresivas — solo una conversación técnica honesta. Al enviar acepta nuestra <a href="/es/privacy" class="disclaimer-link">Política de Privacidad</a>.',
       promiseTitle: '¿Qué ocurre después de enviar el formulario?',
       directLabel: 'Contacto directo:',
       serviceOptions: [
@@ -213,8 +211,6 @@ export const ui = {
     meta: {
       title: 'Tironech — Ingeniería de alto valor. QA, AI & Dev.',
       description: 'Tironech — Boutique de ingeniería de alto valor. QA avanzado con IA, desarrollo a medida y soluciones de Inteligencia Artificial para startups y empresas en USA y Latam.',
-      ogTitle: 'Tironech — Ingeniería de alto valor',
-      ogDescription: 'QA avanzado con IA, Fractional CTO, Edge AI Vision y desarrollo a medida para startups y empresas en USA y Latam.',
     },
   },
 } as const;

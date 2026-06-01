@@ -45,6 +45,12 @@
   font-size: 0.78rem; color: var(--ink-mute); text-align: center;
   line-height: 1.6; margin-top: -0.5rem;
 }
+.disclaimer-link {
+  color: var(--copper-light);
+  border-bottom: 1px solid var(--copper-line);
+  transition: color 0.2s;
+}
+.disclaimer-link:hover { color: var(--copper-hover); }
 
 .contact-side { display: flex; flex-direction: column; gap: 2rem; }
 
@@ -70,22 +76,32 @@
 .contact-steps strong { display: block; font-size: 0.9rem; color: var(--ink); margin-bottom: 0.25rem; }
 .contact-steps p { font-size: 0.82rem; color: var(--ink-mute); line-height: 1.6; margin: 0; }
 
-.contact-direct {
-  background: var(--bg-card); border: 1px solid var(--copper-line);
-  border-radius: 14px; padding: 1.75rem;
-  display: flex; flex-direction: column; gap: 0.5rem; align-items: center;
+.form-feedback {
+  display: none;
+  padding: 0.85rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  line-height: 1.5;
   text-align: center;
 }
-.contact-direct-label {
-  font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.15em;
-  color: var(--ink-mute); text-transform: uppercase;
+.form-feedback--success {
+  display: block;
+  background: rgba(80, 160, 100, 0.12);
+  border: 1px solid rgba(80, 160, 100, 0.35);
+  color: #5fad74;
 }
-.contact-email {
-  font-family: var(--font-mono); font-size: 0.95rem; color: var(--copper-light);
-  border-bottom: 1px solid var(--copper-line); padding-bottom: 1px;
-  transition: color 0.2s, border-color 0.2s;
+.form-feedback--error {
+  display: block;
+  background: rgba(200, 70, 70, 0.1);
+  border: 1px solid rgba(200, 70, 70, 0.3);
+  color: #e07070;
 }
-.contact-email:hover { color: var(--copper-hover); border-color: var(--copper-hover); }
+
+#contact-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  pointer-events: none;
+}
 
 @media (max-width: 539px) {
   .contact-form    { padding: 1.75rem 1.25rem; }
