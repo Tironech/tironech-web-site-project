@@ -17,7 +17,9 @@
       "Bash(git commit -m ' *)",
       "PowerShell($img = [System.Drawing.Image]::FromFile\\(\"e:\\\\Tironech Projects\\\\Tironech Web Site Project\\\\tironech-web-site-project\\\\public\\\\assets\\\\og\\\\og-default.png\"\\); Write-Host \"Width: $\\($img.Width\\), Height: $\\($img.Height\\)\"; $img.Dispose\\(\\))",
       "Bash(sips -g pixelWidth -g pixelHeight /Users/brandongomez/Documents/Personal/tironech-web-site-project/public/assets/og/og-default.png)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Read(//Users/brandongomez/Downloads/favicon_io/**)",
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/brandongomez/Downloads/favicon_io/*.png /Users/brandongomez/Downloads/favicon_io/*.ico)"
     ],
     "additionalDirectories": [
       "e:\\Tironech Projects\\Tironech Web Site Project",
