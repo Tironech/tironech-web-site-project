@@ -15,7 +15,9 @@
       "Bash(npx vercel *)",
       "PowerShell(winget install *)",
       "Bash(git commit -m ' *)",
-      "PowerShell($img = [System.Drawing.Image]::FromFile\\(\"e:\\\\Tironech Projects\\\\Tironech Web Site Project\\\\tironech-web-site-project\\\\public\\\\assets\\\\og\\\\og-default.png\"\\); Write-Host \"Width: $\\($img.Width\\), Height: $\\($img.Height\\)\"; $img.Dispose\\(\\))"
+      "PowerShell($img = [System.Drawing.Image]::FromFile\\(\"e:\\\\Tironech Projects\\\\Tironech Web Site Project\\\\tironech-web-site-project\\\\public\\\\assets\\\\og\\\\og-default.png\"\\); Write-Host \"Width: $\\($img.Width\\), Height: $\\($img.Height\\)\"; $img.Dispose\\(\\))",
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/brandongomez/Documents/Personal/tironech-web-site-project/public/assets/og/og-default.png)",
+      "Bash(npm run *)"
     ],
     "additionalDirectories": [
       "e:\\Tironech Projects\\Tironech Web Site Project",
