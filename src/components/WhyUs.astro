@@ -8,7 +8,7 @@ const lang = (Astro.currentLocale ?? 'en') as Lang;
 const t = ui[lang].whyUs;
 const { whyItems } = getContent(lang);
 ---
-<section class="why-us section section-2" id="why-us" aria-labelledby="why-title">
+<section class="why-us section section-2" id="why-us" data-testid="section-why-us" aria-labelledby="why-title">
   <div class="container">
     <p class="section-eyebrow text-center reveal">{t.eyebrow}</p>
     <h2 class="section-title text-center reveal" id="why-title" set:html={t.h2} />

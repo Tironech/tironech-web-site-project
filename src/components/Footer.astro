@@ -9,7 +9,7 @@ const t = ui[lang].footer;
 const { footerSolutions, footerCompany } = getContent(lang);
 const year = new Date().getFullYear();
 ---
-<footer class="site-footer" role="contentinfo">
+<footer class="site-footer" role="contentinfo" data-testid="site-footer">
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
@@ -58,7 +58,7 @@ const year = new Date().getFullYear();
     <div class="footer-bottom">
       <p>
         &copy; {year} TIRONECH. {t.copyright}
-        <a href={lang === 'es' ? '/es/privacy' : '/privacy'} class="footer-legal">
+        <a href={lang === 'es' ? '/es/privacy' : '/privacy'} class="footer-legal" data-testid="footer-privacy">
           {lang === 'es' ? 'Política de Privacidad' : 'Privacy Policy'}
         </a>
       </p>

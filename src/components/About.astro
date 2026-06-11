@@ -8,7 +8,7 @@ const lang = (Astro.currentLocale ?? 'en') as Lang;
 const t = ui[lang].about;
 const { stats } = getContent(lang);
 ---
-<section class="about section section-1" id="about" aria-labelledby="about-title">
+<section class="about section section-1" id="about" data-testid="section-about" aria-labelledby="about-title">
   <div class="container">
     <div class="about-grid">
       <div class="about-left">
