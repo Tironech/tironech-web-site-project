@@ -8,27 +8,29 @@ const lang = (Astro.currentLocale ?? 'en') as Lang;
 const t = ui[lang].nav;
 const ls = ui[lang].langSwitch;
 ---
-<header class="site-nav" role="banner">
+<header class="site-nav" role="banner" data-testid="site-nav">
   <nav class="nav-inner container" aria-label={t.ariaLabel}>
 
-    <a href="#home" class="nav-logo" aria-label="Tironech — Inicio">
+    <a href="#home" class="nav-logo" aria-label="Tironech — Inicio" data-testid="nav-logo">
       <Image src="/assets/logo/logo.webp" alt="Tironech logo" width={70} height={75} loading="eager" fetchpriority="high" />
       <span class="logo-full">TIRONECH</span>
     </a>
 
     <ul class="nav-links" role="list">
-      <li><a href="#about"      class="nav-link">{t.company}</a></li>
-      <li><a href="#entry"      class="nav-link">{t.solutions}</a></li>
-      <li><a href="#enterprise" class="nav-link">{t.enterprise}</a></li>
-      <li><a href="#why-us"     class="nav-link">{t.whyUs}</a></li>
-      <li><a href="#leadership" class="nav-link">{t.team}</a></li>
+      <li><a href="#about"      class="nav-link" data-testid="nav-link-company">{t.company}</a></li>
+      <li><a href="#entry"      class="nav-link" data-testid="nav-link-solutions">{t.solutions}</a></li>
+      <li><a href="#enterprise" class="nav-link" data-testid="nav-link-enterprise">{t.enterprise}</a></li>
+      <li><a href="#why-us"     class="nav-link" data-testid="nav-link-why-us">{t.whyUs}</a></li>
+      <li><a href="#leadership" class="nav-link" data-testid="nav-link-team">{t.team}</a></li>
     </ul>
 
     <div class="nav-actions">
-      <a href={ls.href} class="lang-btn" aria-label={ls.ariaLabel}>{ls.label}</a>
-      <a href="#contact" class="btn btn-cta btn-sm">{t.cta}</a>
+      <a href={ls.href} class="lang-btn" aria-label={ls.ariaLabel} id="lang-switch" data-testid="lang-switch">{ls.label}</a>
+      <a href="#contact" class="btn btn-cta btn-sm" id="nav-cta" data-testid="nav-cta">{t.cta}</a>
       <button
         class="nav-burger"
+        id="nav-burger"
+        data-testid="nav-burger"
         aria-expanded="false"
         aria-controls="mobile-menu"
         aria-label={t.burgerLabel}
@@ -39,13 +41,13 @@ const ls = ui[lang].langSwitch;
   </nav>
 </header>
 
-<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+<div class="mobile-menu" id="mobile-menu" data-testid="mobile-menu" aria-hidden="true">
   <ul role="list">
-    <li><a href="#about"      class="mobile-link">{t.company}</a></li>
-    <li><a href="#entry"      class="mobile-link">{t.mobileSolutions}</a></li>
-    <li><a href="#enterprise" class="mobile-link">{t.enterprise}</a></li>
-    <li><a href="#why-us"     class="mobile-link">{t.whyUs}</a></li>
-    <li><a href="#leadership" class="mobile-link">{t.team}</a></li>
-    <li><a href="#contact"    class="mobile-link mobile-cta">{t.cta}</a></li>
+    <li><a href="#about"      class="mobile-link" data-testid="mobile-link-company">{t.company}</a></li>
+    <li><a href="#entry"      class="mobile-link" data-testid="mobile-link-solutions">{t.mobileSolutions}</a></li>
+    <li><a href="#enterprise" class="mobile-link" data-testid="mobile-link-enterprise">{t.enterprise}</a></li>
+    <li><a href="#why-us"     class="mobile-link" data-testid="mobile-link-why-us">{t.whyUs}</a></li>
+    <li><a href="#leadership" class="mobile-link" data-testid="mobile-link-team">{t.team}</a></li>
+    <li><a href="#contact"    class="mobile-link mobile-cta" data-testid="mobile-link-cta">{t.cta}</a></li>
   </ul>
 </div>

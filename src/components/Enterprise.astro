@@ -10,7 +10,7 @@ const lang = (Astro.currentLocale ?? 'en') as Lang;
 const t = ui[lang].enterprise;
 const { enterpriseServices } = getContent(lang);
 ---
-<section class="enterprise" id="enterprise" aria-labelledby="enterprise-title">
+<section class="enterprise" id="enterprise" data-testid="section-enterprise" aria-labelledby="enterprise-title">
   <div class="enterprise-bg" aria-hidden="true">
     <Image src="/assets/img/enterprise-section.jpg" alt="Arquitectura de software e infraestructura de desarrollo para empresas enterprise" width={1023} height={471} loading="lazy" />
     <div class="enterprise-tint"></div>

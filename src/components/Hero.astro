@@ -10,7 +10,7 @@ const lang = (Astro.currentLocale ?? 'en') as Lang;
 const t = ui[lang].hero;
 const { markets } = getContent(lang);
 ---
-<section class="hero" id="home" aria-labelledby="hero-title">
+<section class="hero" id="home" data-testid="hero-section" aria-labelledby="hero-title">
   <div class="hero-gradient" data-mouse-gradient aria-hidden="true"></div>
   <div class="hero-noise" aria-hidden="true"></div>
   <div class="hero-img-wrap" aria-hidden="true">
@@ -41,10 +41,10 @@ const { markets } = getContent(lang);
     <p class="hero-sub">{t.sub}</p>
 
     <div class="hero-actions">
-      <a href="#contact" class="btn btn-cta">
+      <a href="#contact" class="btn btn-cta" id="hero-cta-primary" data-testid="hero-cta-primary">
         {t.ctaPrimary} <span class="btn-arrow" aria-hidden="true">→</span>
       </a>
-      <a href="#entry" class="btn btn-ghost">
+      <a href="#entry" class="btn btn-ghost" id="hero-cta-secondary" data-testid="hero-cta-secondary">
         {t.ctaSecondary} <span class="btn-arrow" aria-hidden="true">↓</span>
       </a>
     </div>

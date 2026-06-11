@@ -8,7 +8,7 @@ const lang = (Astro.currentLocale ?? 'en') as Lang;
 const t = ui[lang].entryServices;
 const { entryServices } = getContent(lang);
 ---
-<section class="entry-services section section-2" id="entry" aria-labelledby="entry-title">
+<section class="entry-services section section-2" id="entry" data-testid="section-entry" aria-labelledby="entry-title">
   <div class="entry-accent" aria-hidden="true"></div>
   <div class="container">
     <p class="section-eyebrow text-center reveal">{t.eyebrow}</p>
