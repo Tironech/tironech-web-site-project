@@ -51,9 +51,10 @@
   AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml font/woff font/woff2
 </IfModule>
 
-# Uncomment to force HTTPS once SSL is active:
-# <IfModule mod_rewrite.c>
-#   RewriteEngine On
-#   RewriteCond %{HTTPS} !=on
-#   RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
-# </IfModule>
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Force HTTPS and www — handles all four http/https × www/no-www combinations
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP_HOST} !^www\. [NC]
+  RewriteRule ^(.*)$ https://www.tironech.com/$1 [R=301,L]
+</IfModule>
