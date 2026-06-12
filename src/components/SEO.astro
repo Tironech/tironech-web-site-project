@@ -7,7 +7,6 @@ interface Props {
   lang?: string;
 }
 
-const SITE_URL          = 'https://tironech.com';
 const SITE_NAME         = 'Tironech';
 const DEFAULT_DESCRIPTION =
   'Tironech — High-value engineering boutique. Advanced AI-powered QA, custom development and AI solutions for startups and companies in the US and Latin America.';
@@ -24,19 +23,20 @@ const {
 const ogLocale          = lang === 'es' ? 'es_ES' : 'en_US';
 const ogLocaleAlternate = lang === 'es' ? 'en_US' : 'es_ES';
 
-const canonical       = canonicalURL ?? new URL(Astro.url.pathname, SITE_URL).href;
+const siteOrigin      = Astro.site?.origin ?? 'https://www.tironech.com';
+const canonical       = canonicalURL ?? new URL(Astro.url.pathname, Astro.site).href;
 const ogImageAbsolute = ogImage.startsWith('http')
   ? ogImage
-  : new URL(ogImage, SITE_URL).href;
+  : new URL(ogImage, Astro.site).href;
 
 const schemaOrg = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: SITE_NAME,
-  url: SITE_URL,
+  url: siteOrigin,
   logo: {
     '@type': 'ImageObject',
-    url: `${SITE_URL}/assets/logo/logo.webp`,
+    url: `${siteOrigin}/assets/logo/logo.webp`,
     width: 482,
     height: 518,
   },
